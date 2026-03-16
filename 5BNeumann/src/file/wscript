@@ -1,0 +1,17 @@
+def build(bld):
+	sources = [
+		"ffclose.c",
+		"ffopen.c",
+		"ffread.c",
+		"ffwrite.c",
+		"ft_ffilelist.c",
+		"get_next_line.c",
+		"utils.c"
+	]
+	lftfle = bld.stlib(
+		source		= sources,
+		features	= "c cstlib",
+		target		= "ftfle",
+		includes	= bld.env.INCLUDES_ROOT
+	)
+	lftfle.post()

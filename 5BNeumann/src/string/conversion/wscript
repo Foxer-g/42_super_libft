@@ -1,0 +1,11 @@
+def build(bld):
+	sources = [
+		"int_conversion.c"
+	]
+	lftstrcvn = bld.stlib(
+		source		= sources,
+		features	= "c cstlib",
+		target		= "ftstrcvn",
+		includes	= bld.env.INCLUDES_ROOT
+	)
+	lftstrcvn.post()

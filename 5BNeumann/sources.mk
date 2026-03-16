@@ -1,0 +1,17 @@
+SRC_DIR = src/
+STR_SRCS_DIR = $(SRC_DIR)string/
+MEM_SRCS_DIR = $(SRC_DIR)memory/
+PRT_SRCS_DIR = $(SRC_DIR)print/
+LST_SRC_DIR = $(SRC_DIR)list/
+UTL_SRC_DIR = $(SRC_DIR)utils/
+FIL_SRC_DIR = $(SRC_DIR)file/
+VFS_SRC_DIR = $(SRC_DIR)very_functional_syscalls/
+STRING_SOURCES = $(STR_SRCS_DIR)conversion/int_conversion.c $(STR_SRCS_DIR)alteration/str_alter.c $(STR_SRCS_DIR)checks/str_comparison.c $(STR_SRCS_DIR)manipulation/basic_manipulation.c $(STR_SRCS_DIR)new/ft_split.c $(STR_SRCS_DIR)checks/is_charset.c $(STR_SRCS_DIR)checks/is_chartype.c $(STR_SRCS_DIR)checks/is_valid.c $(STR_SRCS_DIR)new/ft_strjoin.c $(STR_SRCS_DIR)new/ft_strtrim.c $(STR_SRCS_DIR)new/based_on_existing.c
+MEMORY_SOURCES = $(MEM_SRCS_DIR)ft_bzero.c $(MEM_SRCS_DIR)ft_memchr.c $(MEM_SRCS_DIR)ft_calloc.c $(MEM_SRCS_DIR)ft_memcmp.c $(MEM_SRCS_DIR)ft_memcpy.c $(MEM_SRCS_DIR)ft_memmove.c $(MEM_SRCS_DIR)ft_memset.c
+PRINT_SOURCES = $(PRT_SRCS_DIR)ft_putstr_fd.c $(PRT_SRCS_DIR)ft_putnbr_fd.c $(PRT_SRCS_DIR)ft_putchar_fd.c $(PRT_SRCS_DIR)ft_putendl_fd.c
+UTILS_SOURCES = $(UTL_SRC_DIR)environment.c $(UTL_SRC_DIR)math.c
+LIST_SOURCES = $(LST_SRC_DIR)ft_lstnew_bonus.c $(LST_SRC_DIR)ft_lstadd_front_bonus.c $(LST_SRC_DIR)ft_lstsize_bonus.c $(LST_SRC_DIR)ft_lstlast_bonus.c $(LST_SRC_DIR)ft_lstadd_back_bonus.c $(LST_SRC_DIR)ft_lstdelone_bonus.c $(LST_SRC_DIR)ft_lstclear_bonus.c $(LST_SRC_DIR)ft_lstiter_bonus.c $(LST_SRC_DIR)ft_lstmap_bonus.c
+#FILE_SOURCES = $(FIL_SRC_DIR)fopen.c $(FIL_SRC_DIR)fread.c $(FIL_SRC_DIR)fwrite.c $(FIL_SRC_DIR)utils.c $(FIL_SRC_DIR)fclose.c
+FFILE_SOURCES = $(FIL_SRC_DIR)ffopen.c $(FIL_SRC_DIR)ffread.c $(FIL_SRC_DIR)ffwrite.c $(FIL_SRC_DIR)ffclose.c $(FIL_SRC_DIR)ft_ffilelist.c $(FIL_SRC_DIR)get_next_line.c
+VERY_FUNCTIONAL_SYSCALLS_SOURCES = $(VFS_SRC_DIR)fcntl.c $(VFS_SRC_DIR)readv.c $(VFS_SRC_DIR)writev.c
+SOURCES = $(STRING_SOURCES) $(MEMORY_SOURCES) $(PRINT_SOURCES) $(LIST_SOURCES) $(UTILS_SOURCES) $(FFILE_SOURCES) $(VERY_FUNCTIONAL_SYSCALLS_SOURCES)

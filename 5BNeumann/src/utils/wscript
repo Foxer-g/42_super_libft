@@ -1,0 +1,13 @@
+def build(bld):
+	sources = [
+		"environment.c",
+		"math.c"
+	]
+	lftutl = bld.stlib(
+		source		= sources,
+		features	= "c cstlib",
+		target		= "ftutl",
+		includes	= bld.env.INCLUDES_ROOT,
+		use			= "ftstr"
+	)
+	lftutl.post()

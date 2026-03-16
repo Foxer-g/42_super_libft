@@ -1,0 +1,11 @@
+def build(bld):
+	sources = [
+		"str_alter.c"
+	]
+	lftstralt = bld.stlib(
+		source		= sources,
+		features	= "c cstlib",
+		target		= "ftstralt",
+		includes	= bld.env.INCLUDES_ROOT
+	)
+	lftstralt.post()

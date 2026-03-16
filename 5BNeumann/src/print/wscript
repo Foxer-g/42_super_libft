@@ -1,0 +1,14 @@
+def build(bld):
+	sources = [
+		"ft_putchar_fd.c",
+		"ft_putendl_fd.c",
+		"ft_putnbr_fd.c",
+		"ft_putstr_fd.c"
+	]
+	lftprt = bld.stlib(
+		source		= sources,
+		features	= "c cstlib",
+		target		= "ftprt",
+		includes	= bld.env.INCLUDES_ROOT
+	)
+	lftprt.post()
