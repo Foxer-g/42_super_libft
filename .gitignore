@@ -1,0 +1,8 @@
+build
+wbuild
+.lock-waf*
+.idea
+.project.gf
+**.a
+*.tape
+*.o
