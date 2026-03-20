@@ -2,9 +2,9 @@ def build(bld):
 	sources = [
 		"str_alter.c"
 	]
-	lftstralt = bld.stlib(
+	lftstralt = bld.shlib(
 		source		= sources,
-		features	= "c cstlib",
+		features	= "c cshlib",
 		target		= "ftstralt",
 		includes	= bld.env.INCLUDES_ROOT
 	)

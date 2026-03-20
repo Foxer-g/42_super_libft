@@ -8,9 +8,9 @@ def build(bld):
 		"ft_memmove.c",
 		"ft_memset.c"
 	]
-	lftmem = bld.stlib(
+	lftmem = bld.shlib(
 		source		= sources,
-		features	= "c cstlib",
+		features	= "c cshlib",
 		target		= "ftmem",
 		includes	= bld.env.INCLUDES_ROOT
 	)
