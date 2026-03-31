@@ -6,11 +6,12 @@
 /*   By: f0xer <f0xer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/28 00:00:43 by f0xer             #+#    #+#             */
-/*   Updated: 2026/03/28 00:11:03 by f0xer            ###   ########.fr       */
+/*   Updated: 2026/03/31 16:58:10 by f0xer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 int32_t	ft_memcmp(const void *s1, const void *s2, uintmax_t n)
 {
 	uintmax_t		i;
@@ -24,7 +25,7 @@ int32_t	ft_memcmp(const void *s1, const void *s2, uintmax_t n)
 	{
 		if (s1_bis[i] != s2_bis[i])
 			return (s1_bis[i] - s2_bis[i]);
-		i++
+		i++;
 	}
 	return (0);
 }

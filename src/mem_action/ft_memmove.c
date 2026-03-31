@@ -6,13 +6,13 @@
 /*   By: f0xer <f0xer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 06:43:39 by f0xer             #+#    #+#             */
-/*   Updated: 2026/03/29 06:56:03 by f0xer            ###   ########.fr       */
+/*   Updated: 2026/03/31 16:59:29 by f0xer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove()
+void	*ft_memmove(void *dest, const void *src, uintmax_t n)
 {
 	uintmax_t	i;
 	char		*dest_ch;

@@ -6,11 +6,11 @@
 /*   By: f0xer <f0xer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 07:10:19 by f0xer             #+#    #+#             */
-/*   Updated: 2026/03/31 07:13:17 by f0xer            ###   ########.fr       */
+/*   Updated: 2026/03/31 17:00:52 by f0xer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memset()
+void	*ft_memset(void *s, int32_t c uintmax_t n)
 {
 	uintmax_t	i;
 	char		*s_cpy;
