@@ -8,9 +8,9 @@ def build(bld):
 		"get_next_line.c",
 		"utils.c"
 	]
-	lftfle = bld.stlib(
+	lftfle = bld.shlib(
 		source		= sources,
-		features	= "c cstlib",
+		features	= "c cshlib",
 		target		= "ftfle",
 		includes	= bld.env.INCLUDES_ROOT
 	)

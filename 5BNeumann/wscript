@@ -23,8 +23,8 @@ def configure(conf):
 def build(bld):
 	bld.env.append_value("INCLUDES_ROOT", [bld.path.find_dir('includes')])
 	bld.recurse("src")
-	lft = bld.stlib(
-		features	= "c cstlib",
+	lft = bld.shlib(
+		features	= "c cshlib",
 		target		= "ft",
 		includes	= bld.env.INCLUDES_ROOT,
 		use			= ["ftfle", "ftlst", "ftmem", "ftprt", "ftstr", "ftutl", "ftvfs"]

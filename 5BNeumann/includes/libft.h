@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:45:16 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/03/10 01:41:24 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/03/20 01:08:18 by rboutelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdbool.h>
 # include <stdint.h>
 # include "file.h"
+# include "dynamic_list.h"
 
 bool		ft_isalpha(int32_t c);
 bool		ft_isdigit(int32_t c);
@@ -50,6 +51,7 @@ int32_t		ft_memcmp(const void *s1, const void *s2, size_t n);
 char		*ft_strnstr(const char *big, const char *little, size_t len);
 int32_t		ft_atoi(const char *str);
 void		*ft_calloc(size_t nmemb, size_t size);
+void		*ft_realloc(void *ptr, size_t size);
 char		*ft_strdup(const char *s);
 char		*ft_strndup(const char *s, uint64_t n);
 char		*ft_substr(char const *s, uint32_t start, size_t len);

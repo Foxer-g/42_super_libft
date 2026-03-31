@@ -4,9 +4,9 @@ def build(bld):
 		"readv.c",
 		"writev.c"
 	]
-	lftvfs = bld.stlib(
+	lftvfs = bld.shlib(
 		source		= sources,
-		features	= "c cstlib",
+		features	= "c cshlib",
 		target		= "ftvfs",
 		includes	= bld.env.INCLUDES_ROOT
 	)

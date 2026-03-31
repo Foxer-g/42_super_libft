@@ -5,9 +5,9 @@ def build(bld):
 		"ft_putnbr_fd.c",
 		"ft_putstr_fd.c"
 	]
-	lftprt = bld.stlib(
+	lftprt = bld.shlib(
 		source		= sources,
-		features	= "c cstlib",
+		features	= "c cshlib",
 		target		= "ftprt",
 		includes	= bld.env.INCLUDES_ROOT
 	)

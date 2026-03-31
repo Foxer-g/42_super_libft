@@ -18,7 +18,15 @@ OBJECTS = $(SOURCES:src/%.c=$(BUILD_DIR)%.o)
 CFLAGS = -Wall -Werror -Wextra -g3
 CC = cc
 
-all:	$(NAME)
+all: monolithic
+
+monolithic: $(NAME)
+
+hierarchical: configure
+	./waf build
+
+configure:
+	./waf configure
 
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
@@ -36,9 +44,6 @@ clean:
 fclean: clean
 	-rm -f $(NAME)
 
-bonus: $(OBJECTS)
-	ar rv $(NAME) $^
-
 re: fclean all
 
-.PHONY: clean all re fclean
+.PHONY: clean all re fclean hierarchical configure monolithic

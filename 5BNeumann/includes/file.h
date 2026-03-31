@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 22:09:10 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/03/11 00:39:47 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/03/17 05:44:34 by rboutelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,9 @@
 # define WE 1
 # define RE 0
 
-typedef struct s_file	t_file;
 typedef int				t_ffile;
 typedef struct s_iovec	t_iovec;
-/*
- * Temporarily removed, they aren't currently implemented properly since the
- * whole ecosystem is required for them to work...
-t_file		*ft_fopen(const char *name, const char *mode);
-uintmax_t	ft_fread(unsigned char *destv, uintmax_t size,
-	uintmax_t nmemb, t_file *file);
-*/
+
 void		clear_filelist(void);
 void		ft_ffclose(t_ffile file);
 void		close_pipe(int32_t *fds);
