@@ -6,11 +6,21 @@
 /*   By: f0xer <f0xer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 02:58:13 by f0xer             #+#    #+#             */
-/*   Updated: 2026/03/24 03:19:41 by f0xer            ###   ########.fr       */
+/*   Updated: 2026/04/08 13:23:57 by f0xer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+uintmax_t	find_EOL(char *stash)
+{
+	uintmax_t	i;
+
+	i =  0;
+	while (stash[i] != '\n')
+		i++;
+	return (i);
+}
 
 void	fill_stash(char **stash)
 {
@@ -35,6 +45,7 @@ char	*get_next_line(int fd)
 {
 	static char	*stash[FD_SETSIZE];
 	char		*out;
+	uintmax_t	EOL_pos;
 
 	if (fd == -1)
 	{
@@ -42,8 +53,9 @@ char	*get_next_line(int fd)
 		return (NULL);
 	}
 	fill_stash(&stash[fd]);
-	out = ft_substr(stash[fd], 0, end_line_pos);
-	temp = ft_substr(stash[fd], EO_pos, ft_strlen(&stash[fd] - EOL_pos));
+	EOL_pos = find_EOL(stash[fd]);
+	out = ft_substr(stash[fd], 0, EOL_pos);
+	temp = ft_substr(stash[fd], EOL_pos, ft_strlen(&stash[fd] - EOL_pos));
 	free(stash[fd]);
 	stash[fd] = temp;
 	free(buffer);
