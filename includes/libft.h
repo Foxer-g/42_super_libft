@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:45:16 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/04/08 01:50:10 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/04/08 03:03:16 by rboutelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 typedef int	t_ffile;
 
 uintmax_t	ft_strlen(const char *str);
-uintmax_t	ft_strcmp(char *s1, char *s2);
+uintmax_t	ft_strcmp(const char *s1, const char *s2);
 char		*ft_strchr(const char *s, int32_t c);
 
 int32_t	ft_putchar_fd(char c, t_ffile fd);

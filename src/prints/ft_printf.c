@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 23:33:28 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/04/08 01:45:03 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/04/08 03:04:46 by rboutelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 typedef	int t_ffile;
 void massiveWarCrimeForNorminette(){
 	#define FUCK_YOU for
-	FUCK_YOU(int i; i < 10; i++);
+	FUCK_YOU(int i = 0; i < 10; i++);
 }
 
 int32_t	ft_putuint_base_fd(uint64_t n, char *base, t_ffile fd, bool *error)
