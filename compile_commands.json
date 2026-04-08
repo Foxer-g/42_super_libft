@@ -1,0 +1,24 @@
+[
+  {
+    "file": "src/prints/ft_printf.c",
+    "arguments": [
+      "cc",
+      "-Wall",
+      "-Werror",
+      "-Wextra",
+      "-g3",
+      "-I",
+      "./includes",
+      "-c",
+      "src/prints/ft_printf.c",
+      "-o",
+      "build/prints/ft_printf.o",
+      "-I",
+      "/home/neumann/.local/include",
+      "-I",
+      "/home/neumann/.local/include"
+    ],
+    "directory": "/home/neumann/workspace/42_super_libft",
+    "output": "build/prints/ft_printf.o"
+  }
+]
