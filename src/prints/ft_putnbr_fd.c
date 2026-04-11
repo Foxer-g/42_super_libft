@@ -15,7 +15,7 @@
 int32_t	ft_putnbr_fd(int32_t n, int32_t fd)
 {
 	int32_t	result;
-	int32_t	nb;
+	int64_t	nb;
 
 	result = 0;
 	nb = n;

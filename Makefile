@@ -15,7 +15,7 @@ NAME	=	libft.a
 INCLUDES = ./includes
 BUILD_DIR = build/
 OBJECTS = $(SOURCES:src/%.c=$(BUILD_DIR)%.o)
-CFLAGS = -Wall -Werror -Wextra -g3
+CFLAGS = -Wall -Werror -Wextra -ggdb
 CC = cc
 
 all: $(NAME)

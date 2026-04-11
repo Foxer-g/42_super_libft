@@ -34,7 +34,7 @@ int32_t	ft_putuint_base_fd(uint64_t n, char *base, t_ffile fd, bool *error)
 bool	in_set(char c)
 {
 	return (c == 'c' || c == 's' || c == 'd' || c == 'i' || c == 'u'
-		|| c == 'x' || c == 'X' || c == 'p');
+		|| c == 'x' || c == 'X' || c == 'p' || c == '%');
 }
 
 int32_t	get_next(const char *format, bool *error)
@@ -44,17 +44,33 @@ int32_t	get_next(const char *format, bool *error)
 	next = 0;
 	if (*format == '%')
 	{
-		while (!in_set(*format + next) && *format)
+		next++;
+		while (!in_set(*(format + next)) && *(format + next))
 			next++;
-		if (!*format && !in_set(*format - 1))
+		if (!*format && !in_set(*(format - 1)))
 			*error = true;
+		next++;
 	}
 	else
 	{
-		while (*format + next != '%' && *format + next)
+		while (*(format + next) != '%' && *(format + next))
 			next++;
 	}
 	return (next);
+}
+
+int32_t	print_pointer(void *pointer, t_ffile fd, bool *error)
+{
+	int32_t	result;
+
+	if (!pointer)
+		result = ft_putstr_fd("(nil)", fd);
+	else
+	{
+		result = ft_putstr_fd("0x", fd);
+		result += ft_putuint_base_fd((uintptr_t)pointer, "0123456789abcdef", fd, error);
+	}
+	return (result);
 }
 
 int32_t inject(const char *format, va_list args, bool *error, t_ffile fd)
@@ -62,46 +78,50 @@ int32_t inject(const char *format, va_list args, bool *error, t_ffile fd)
 	int32_t	local_write;
 
 	local_write = -1;
-	if (*format == '%')
+	if (*(format + 1) == '%')
 		local_write = ft_putchar_fd('%', fd);
-	else if (*format == 'c')
+	else if (*(format + 1) == 'c')
 		local_write = ft_putchar_fd(va_arg(args, int32_t), fd);
-	else if (*format == 's')
-		local_write = ft_putstr_fd(va_arg(args, char *), fd);
-	else if (*format == 'd' || *format == 'i')
+	else if (*(format + 1) == 's')
+		local_write = ft_putstr_fd_null(va_arg(args, char *), fd);
+	else if (*(format + 1) == 'd' || *(format + 1) == 'i')
 		local_write = ft_putnbr_fd(va_arg(args, int), fd);
-	else if (*format == 'u')
+	else if (*(format + 1) == 'u')
 		local_write = ft_putuint_base_fd(va_arg(args, uint32_t), "0123456789", fd, error);
-	else if (*format == 'x')
+	else if (*(format + 1) == 'x')
 		local_write = ft_putuint_base_fd(va_arg(args, uint32_t), "0123456789abcdef", fd, error);
-	else if (*format == 'X')
+	else if (*(format + 1) == 'X')
 		local_write = ft_putuint_base_fd(va_arg(args, uint32_t), "0123456789ABCDEF", fd, error);
-	else if (*format == 'p')
+	else if (*(format + 1) == 'p')
 	{
-		local_write = ft_putstr_fd("0x", fd);
-		local_write += ft_putuint_base_fd((uintptr_t)va_arg(args, void *), "0123456789abcdef", fd, error);
+		local_write = print_pointer(va_arg(args, void *), fd, error);
 	}
 	else
 		*error = true;
 	return (local_write);
 }
 
-int32_t	pre_check(t_ffile fd, const char *format, ...)
+int32_t	pre_check(t_ffile fd, const char *format, va_list args)
 {
-	va_list	args;
 	char	*str;
+	int32_t	result;
 
-	va_start(args, format);
-	if (ft_strchr(format, '%'))
+	if (!ft_strchr(format, '%'))
 	{
-		ft_putendl_fd(format, fd);
-		return (ft_strlen(format));
+		result = ft_putstr_fd(format, fd);
+		return (result);
 	}
-	if (ft_strcmp(format, "%s\n"))
+	if (!ft_strcmp(format, "%s\n"))
 	{
 		str = va_arg(args, char *);
-		ft_putendl_fd(str, fd);
-		return (ft_strlen(str) + 1);
+		result = ft_putendl_fd_null(str, fd);
+		return (result);
+	}
+	if (!ft_strcmp(format, "%s"))
+	{
+		str = va_arg(args, char *);
+		result = ft_putstr_fd_null(str, fd);
+		return (result);
 	}
 	return (0);
 }
@@ -111,6 +131,7 @@ int32_t	ft_dprintf_int(t_ffile fd, const char *format, va_list args)
 	int32_t	total_write;
 	bool	error;
 
+	error = false;
 	total_write = pre_check(fd, format, args);
 	if (total_write)
 		return (total_write);

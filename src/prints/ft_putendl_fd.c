@@ -23,6 +23,17 @@ int32_t	ft_putendl_fd(const char *s, int32_t fd)
 	return (result);
 }
 
+int32_t	ft_putendl_fd_null(const char *s, int32_t fd)
+{
+	int32_t	result;
+
+	if (!s)
+		return (0);
+	result = ft_putstr_fd_null(s, fd);
+	result += ft_putchar_fd('\n', fd);
+	return (result);
+}
+
 int32_t	ft_puts(char *s)
 {
 	int32_t	result;

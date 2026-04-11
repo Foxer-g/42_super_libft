@@ -6,3 +6,9 @@ wbuild
 **.a
 *.tape
 */*.o
+nimcache/
+outputGotten.txt
+testresults/
+tests/*
+!tests/prints
+!tests/prints/*.nim

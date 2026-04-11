@@ -31,3 +31,14 @@ int32_t	ft_putstrn_fd(const char *s, int32_t fd, int32_t len)
 	result = write(fd, s, min(ft_strlen(s), len));
 	return (result);
 }
+
+int32_t	ft_putstr_fd_null(const char *s, int32_t fd)
+{
+	int32_t	result;
+
+	if (!s)
+		result = write(fd, "(null)", 6);
+	else
+		result = write(fd, s, ft_strlen(s));
+	return (result);
+}
