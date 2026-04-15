@@ -15,12 +15,12 @@
 void	ft_free(uintmax_t len, ...)
 {
 	va_list	args;
-	void	*temp;
+	void	**temp;
 
-	va_start(args, str);
+	va_start(args, len);
 	while (len)
 	{
-		temp = va_arg(arg, char **);
+		temp = (void **)va_arg(args, char **);
 		free(*temp);
 		*temp = NULL;
 		len--;
@@ -30,14 +30,14 @@ void	ft_free(uintmax_t len, ...)
 void	ft_free_tab(uintmax_t len, ...)
 {
 	va_list		args;
-	void		*temp;
+	void		***temp;
 	intmax_t	i;
 
-	va_start(args, str);
+	va_start(args, len);
 	while (len)
 	{
 		i = 0;
-		temp = va_arg(arg, char ***);
+		temp = (void ***)va_arg(args, char ***);
 		while (*temp[i])
 		{
 			free(*temp[i]);

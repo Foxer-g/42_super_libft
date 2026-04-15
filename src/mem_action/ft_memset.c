@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memset(void *s, int32_t c uintmax_t n)
+#include "libft.h"
+
+void	*ft_memset(void *s, int32_t c, uintmax_t n)
 {
 	uintmax_t	i;
 	char		*s_cpy;

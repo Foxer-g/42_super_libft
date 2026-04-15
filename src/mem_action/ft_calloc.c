@@ -20,7 +20,7 @@ void	*ft_calloc(uint64_t nmemb, uint64_t size)
 		return (NULL);
 	res = malloc(nmemb * size);
 	if (!res)
-		retunr (NULL);
+		return (NULL);
 	ft_bzero(res, nmemb * size);
 	return (res);
 }

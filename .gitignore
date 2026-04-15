@@ -10,5 +10,10 @@ nimcache/
 outputGotten.txt
 testresults/
 tests/*
+!tests/*.nim
 !tests/prints
+tests/prints/*
 !tests/prints/*.nim
+!tests/mem_action
+tests/mem_action/*
+!tests/mem_action/*.nim
