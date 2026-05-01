@@ -22,6 +22,7 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <stdint.h>
+# include <stdarg.h>
 # include "file.h"
 # include "dynamic_list.h"
 
@@ -63,10 +64,13 @@ char		*ft_strmapi(char const *s, char (*f)(uint32_t, char));
 void		ft_striteri(char *s, void (*f)(uint32_t, char*));
 int32_t		ft_putchar_fd(char c, t_ffile fd);
 int32_t		ft_putstr_fd(const char *s, t_ffile fd);
+int32_t		ft_putstrn_fd(const char *s, t_ffile fd, int32_t len);
 int32_t		ft_putstr_fd_null(const char *s, int32_t fd);
 int32_t		ft_putendl_fd(const char *s, t_ffile fd);
 int32_t		ft_putendl_fd_null(const char *s, int32_t fd);
 int32_t		ft_putnbr_fd(int32_t n, t_ffile fd);
+int32_t 	ft_dprintf(t_ffile fd, const char *format, ...);
+int32_t 	ft_printf(const char *format, ...);
 int32_t		ft_strcmp(const char *s1, const char *s2);
 char		*get_env(const char *name, char *const *env);
 char		*get_executable(const char *str);
