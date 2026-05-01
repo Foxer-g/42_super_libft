@@ -15,10 +15,18 @@ NAME	=	libft.a
 INCLUDES = ./includes
 BUILD_DIR = build/
 OBJECTS = $(SOURCES:src/%.c=$(BUILD_DIR)%.o)
-CFLAGS = -Wall -Werror -Wextra -ggdb
+CFLAGS = -Wall -Werror -Wextra -g3
 CC = cc
 
-all: $(NAME)
+all: monolithic
+
+monolithic: $(NAME)
+
+hierarchical: configure
+	./waf build
+
+configure:
+	./waf configure
 
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
