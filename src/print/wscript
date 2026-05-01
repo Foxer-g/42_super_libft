@@ -3,7 +3,8 @@ def build(bld):
 		"ft_putchar_fd.c",
 		"ft_putendl_fd.c",
 		"ft_putnbr_fd.c",
-		"ft_putstr_fd.c"
+		"ft_putstr_fd.c",
+		"ft_printf.c"
 	]
 	lftprt = bld.shlib(
 		source		= sources,
