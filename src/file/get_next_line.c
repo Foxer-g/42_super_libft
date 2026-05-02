@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int8_t	readline(char *buffer, char **persistant, int fd)
+static int8_t	readline(char *buffer, char **persistant, int fd)
 {
 	int64_t	status;
 
