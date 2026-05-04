@@ -4,6 +4,8 @@ def build(bld):
 		"ft_putendl_fd.c",
 		"ft_putnbr_fd.c",
 		"ft_putstr_fd.c",
+		"ft_putuint_base_fd.c",
+		"printf_helpers.c",
 		"ft_printf.c"
 	]
 	lftprt = bld.shlib(

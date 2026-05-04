@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    Makefile                                                   _              #
 #                                                     +:+ +:+         +:+      #
 #    By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/13 13:42:42 by rboutelo          #+#    #+#              #
-#    Updated: 2025/10/21 11:26:54 by rboutelo         ###   ########.fr        #
+#    Updated: 2026/05/04 06:04:55 by neumann                                   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,5 +45,8 @@ fclean: clean
 	-rm -f $(NAME)
 
 re: fclean all
+
+test: all
+	testament all
 
 .PHONY: clean all re fclean hierarchical configure monolithic

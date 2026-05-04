@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_helpers.c                                   :+:      :+:    :+:   */
+/*   printf_helpers.c                                           _             */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 23:33:28 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/04/08 03:04:46 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/05/04 06:04:10 by neumann                                  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int32_t	inject(const char *format, va_list args, bool *error, t_ffile fd)
 		local_write = print_pointer(va_arg(args, void *), fd, error);
 	else
 		*error = true;
-	if (*(format + 1) == 'p' || *(format + 1) == 'x' || *(format + 1) == 'X')
+	if (*(format + 1) == 'u' || *(format + 1) == 'x' || *(format + 1) == 'X')
 		local_write = ft_putuint_base_fd(va_arg(args, uint32_t), b, fd, error);
 	return (local_write);
 }
