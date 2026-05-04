@@ -39,7 +39,8 @@ void	*extend_array(void **arr)
 
 	header = (t_header *)*arr - 1;
 	header->capacity *= 2;
-	header = (t_header *)ft_realloc(*arr, get_size(header->type) * header->capacity + sizeof(t_header));
+	header = (t_header *)ft_realloc(*arr,
+			get_size(header->type) * header->capacity + sizeof(t_header));
 	return (header);
 }
 

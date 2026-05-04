@@ -25,6 +25,9 @@
 # include <stdarg.h>
 # include "file.h"
 # include "dynamic_list.h"
+# define DEC_BASE "0123456789"
+# define HEX_LOW "0123456789abcdef"
+# define HEX_UPP "0123456789ABCDEF"
 
 bool		ft_isalpha(int32_t c);
 bool		ft_isdigit(int32_t c);
@@ -69,8 +72,9 @@ int32_t		ft_putstr_fd_null(const char *s, int32_t fd);
 int32_t		ft_putendl_fd(const char *s, t_ffile fd);
 int32_t		ft_putendl_fd_null(const char *s, int32_t fd);
 int32_t		ft_putnbr_fd(int32_t n, t_ffile fd);
-int32_t 	ft_dprintf(t_ffile fd, const char *format, ...);
-int32_t 	ft_printf(const char *format, ...);
+int32_t		ft_putuint_base_fd(uint64_t n, char *base, t_ffile fd, bool *error);
+int32_t		ft_dprintf(t_ffile fd, const char *format, ...);
+int32_t		ft_printf(const char *format, ...);
 int32_t		ft_strcmp(const char *s1, const char *s2);
 char		*get_env(const char *name, char *const *env);
 char		*get_executable(const char *str);
@@ -111,4 +115,12 @@ typedef enum e_validator
 
 typedef bool	(*t_validator_fn)(int32_t val);
 
+/* ********************************** */
+/*             INTERNALS              */
+/* ********************************** */
+bool		in_set(char c);
+int32_t		get_next(const char *format, bool *error);
+int32_t		print_pointer(void *pointer, t_ffile fd, bool *error);
+int32_t		inject(const char *format, va_list args, bool *error, t_ffile fd);
+int32_t		pre_check(t_ffile fd, const char *format, va_list args);
 #endif

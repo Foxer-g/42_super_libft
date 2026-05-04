@@ -17,3 +17,5 @@ tests/prints/*
 !tests/mem_action
 tests/mem_action/*
 !tests/mem_action/*.nim
+
+compile_commands.json

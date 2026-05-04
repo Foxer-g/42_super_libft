@@ -26,7 +26,7 @@ proc ft_memset*(s: pointer; c: int32_t; n: uintmax_t): pointer {.importc.}
 ##                                    PRINTS
 ##  **************************************************************************
 
-proc ft_putchar_fd*(c: char; fd: t_ffile): int32_t {.importc.}
+proc ft_putchar_fd*(c: cchar; fd: t_ffile): int32_t {.importc.}
 proc ft_putstr_fd*(s: cstring; fd: t_ffile): int32_t {.importc.}
 proc ft_putstr_fd_null*(s: cstring; fd: t_ffile): int32_t {.importc.}
 proc ft_putstrn_fd*(s: cstring; fd: int32_t; len: int32_t): int32_t {.importc.}

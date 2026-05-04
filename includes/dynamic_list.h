@@ -45,7 +45,7 @@ union u_value
 	void		*ptr;
 	float		f;
 	double		d;
-	long double ld;
+	long double	ld;
 };
 
 typedef struct s_elem

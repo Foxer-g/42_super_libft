@@ -14,7 +14,7 @@
 
 static void	cast_set(void *arr, t_elem elem)
 {
-	t_header	*const header = (t_header *)arr - 1;
+	t_header *const	header = (t_header *)arr - 1;
 
 	if (elem.type == N8)
 		((uint8_t *)arr)[header->count++] = elem.value.c;

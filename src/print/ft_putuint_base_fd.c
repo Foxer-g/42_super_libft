@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                                            */
-/*   utils.c                                                    _             */
+/*   ft_putuint_base_fd.c                                       _             */
 /*                                                            _ \'-_,#        */
 /*   By: neumann </var/spool/mail/neumann>                   _\'--','`|       */
 /*                                                           \`---`  /        */
-/*   Created: 2026/05/04 04:55:50 by neumann                  `----'`         */
-/*   Updated: 2026/05/04 04:56:01 by neumann                                  */
+/*   Created: 2026/05/04 04:57:33 by neumann                  `----'`         */
+/*   Updated: 2026/05/04 04:57:33 by neumann                                  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "int_file.h"
+#include "libft.h"
 
-inline uintmax_t	get_total_iov_len(const t_iovec *iov, uintmax_t cnt)
+int32_t	ft_putuint_base_fd(uint64_t n, char *base, t_ffile fd, bool *error)
 {
-	uintmax_t	total;
+	int32_t		result;
+	uint64_t	base_length;
 
-	total = 0;
-	while (cnt-- > 0)
-		total += iov[cnt].iov_len;
-	return (total);
+	result = 0;
+	base_length = ft_strlen(base);
+	if (n >= base_length)
+		result += ft_putuint_base_fd(n / base_length, base, fd, error);
+	result += ft_putchar_fd(base[n % base_length], fd);
+	return (result);
 }
