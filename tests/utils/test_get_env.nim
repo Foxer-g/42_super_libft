@@ -1,0 +1,39 @@
+discard """
+  action: "compile"
+  exitcode: 0
+
+  # On Linux 64-bit machines, whether to use Valgrind to check for bad memory
+  # accesses or memory leaks. On other architectures, the test will be run
+  # as-is, without Valgrind.
+  # Options:
+  #   true: run the test with Valgrind
+  #   false: run the without Valgrind
+  #   "leaks": run the test with Valgrind, but do not check for memory leaks
+  valgrind: false
+
+  # Targets to run the test into (c, cpp, objc, js). Defaults to c.
+  targets: "c"
+
+  # Conditions that will skip this test. Use of multiple "disabled" clauses
+  # is permitted.
+  disabled: "win"
+"""
+import
+    ../[libft, glibc],
+    std/os
+
+const
+  CPATH: cstring = "PATH="
+  PATH: string = "PATH"
+var
+    env: seq[string]
+    cenv: cstringArray
+
+for key, val in envPairs():
+    env.add(key & "=" & val)
+
+cenv = allocCStringArray(env)
+
+assert($ c_get_env(CPATH, cenv) == getEnv(PATH))
+
+deallocCStringArray(cenv)

@@ -17,5 +17,13 @@ tests/prints/*
 !tests/mem_action
 tests/mem_action/*
 !tests/mem_action/*.nim
-
+!tests/utils
+tests/utils/*
+!tests/utils/*.nim
+!tests/string_manipulation
+tests/string_manipulation/*
+!tests/string_manipulation/*.nim
+!tests/string_alteration
+tests/string_alteration/*
+!tests/string_alteration/*.nim
 compile_commands.json
