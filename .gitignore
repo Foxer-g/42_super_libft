@@ -26,4 +26,7 @@ tests/string_manipulation/*
 !tests/string_alteration
 tests/string_alteration/*
 !tests/string_alteration/*.nim
+!tests/string_checks
+tests/string_checks/*
+!tests/string_checks/*.nim
 compile_commands.json
