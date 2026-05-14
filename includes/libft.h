@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   libft.h                                                       ___        */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:45:16 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/03/20 01:08:18 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/05/13 08:08:36 by neumann                                  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # define DEC_BASE "0123456789"
 # define HEX_LOW "0123456789abcdef"
 # define HEX_UPP "0123456789ABCDEF"
+
+typedef bool	(*t_validator_fn)(int32_t val);
 
 bool		ft_isalpha(int32_t c);
 bool		ft_isdigit(int32_t c);
@@ -75,6 +77,7 @@ int32_t		ft_putnbr_fd(int32_t n, t_ffile fd);
 int32_t		ft_putuint_base_fd(uint64_t n, char *base, t_ffile fd, bool *error);
 int32_t		ft_dprintf(t_ffile fd, const char *format, ...);
 int32_t		ft_printf(const char *format, ...);
+bool		str_is_valid(char *str, t_validator_fn validator);
 int32_t		ft_strcmp(const char *s1, const char *s2);
 char		*get_env(const char *name, char *const *env);
 char		*get_executable(const char *str);
@@ -112,8 +115,6 @@ typedef enum e_validator
 	ASCII,
 	ALNUM
 }	t_validator;
-
-typedef bool	(*t_validator_fn)(int32_t val);
 
 /* ********************************** */
 /*             INTERNALS              */

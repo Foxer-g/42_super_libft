@@ -4,7 +4,7 @@ type
   uint32_t = cuint
   uint64_t = culong
   uintmax_t = csize_t
-
+  t_validator_fn* = proc (val: int32_t): bool
 const
   DEC_BASE* = "0123456789"
   HEX_LOW* = "0123456789abcdef"
@@ -65,3 +65,4 @@ proc get_next_line*(fd: cint): cstring {.importc.}
 proc min*(a: uintmax_t; b: uintmax_t): uintmax_t {.importc.}
 proc free_nt_tab*(str: cstringArray; alloc_count: int32_t): pointer {.importc.}
 proc nt_tablen*(tab: ptr pointer): int32_t {.importc.}
+proc str_is_valid*(str: cstring; validator: t_validator_fn): bool {.importc.}

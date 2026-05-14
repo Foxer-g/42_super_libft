@@ -29,4 +29,10 @@ tests/string_alteration/*
 !tests/string_checks
 tests/string_checks/*
 !tests/string_checks/*.nim
+!tests/string_conversion
+tests/string_conversion/*
+!tests/string_conversion/*.nim
+!tests/string_new
+tests/string_new/*
+!tests/string_new/*.nim
 compile_commands.json

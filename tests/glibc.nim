@@ -8,3 +8,4 @@ proc memcmp*(s1: pointer; s2: pointer; n: csize_t): cint {.importc, header:"<str
 proc memcpy*(dest: pointer; src: pointer; n: csize_t): pointer {.importc, header:"<string.h>".}
 proc memmove*(dest: pointer; src: pointer; n: csize_t): pointer {.importc, header:"<string.h>".}
 proc memset*(s: pointer; c: cint; n: csize_t): pointer {.importc, header:"<string.h>".}
+proc free*(p: pointer) {.importc, header:"<stdlib.h>".}
