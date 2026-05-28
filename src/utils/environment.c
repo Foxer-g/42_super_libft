@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   environment.c                                      :+:      :+:    :+:   */
+/*   environment.c                                       ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀    */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 16:54:35 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/03/10 02:49:29 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/05/21 03:09:37 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ char	*get_env(const char *name, char *const *env)
 	while (*env)
 	{
 		if (!ft_strncmp(name, *env, ft_strlen(name)))
-			return ((*env) + ft_strlen(name));
+		{
+			if (*((*env) + ft_strlen(name)) == '=')
+				return ((*env) + ft_strlen(name) + 1);
+		}
 		env++;
 	}
 	return (*env);
