@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 16:54:35 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/05/21 03:09:37 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/05/31 19:29:46 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,28 +26,52 @@ char	*get_env(const char *name, char *const *env)
 	return (*env);
 }
 
-char	*get_executable(const char *str)
+void	set_var(char **var, char *val)
 {
-	char	*result;
-
-	result = ft_calloc(ft_fwlen(str) + 2, sizeof(char));
-	result[0] = '/';
-	ft_strlcat(result, str, ft_fwlen(str) + 2);
-	return (result);
+	*var = ft_realloc(*var, ft_strlen(*var) + ft_strlen(val) + 2);
+	while (**var && **var != '=')
+		(*var)++;
+	if (**var == '=')
+		(*var)++;
+	else
+		**var = '=';
+	ft_strlcat(*var, val, ft_strlen(*var) + ft_strlen(val) + 2);
 }
 
-char	*find_exec(const char *name, char const **env)
+void	set_env(const char *name, char ***env, char *value)
 {
-	char	*result;
+	char	*var;
+	char	**oenv;
 
-	while (env && *env)
+	var = NULL;
+	oenv = *env;
+	while (*oenv)
 	{
-		result = ft_strjoin(*env, name);
-		if (!access(result, X_OK))
-			return (result);
-		free(result);
-		env++;
+		if (!ft_strncmp(name, *oenv, ft_strlen(name)))
+		{
+			if (*((*oenv) + ft_strlen(name)) == '=')
+			{
+				var = *oenv;
+			}
+		}
 	}
-	result = ft_strdup(name);
-	return (result);
+	if (!var)
+	{
+		*env = ft_realloc(*env, (nt_tablen((void **)oenv) + 2) * sizeof(char *));
+		var = ft_calloc(ft_strlen(name) + 2, sizeof(char));
+		*(*env + nt_tablen((void **)oenv)) = var;
+		ft_strlcpy(var, name, ft_strlen(name) + 2);
+		*(*env + nt_tablen((void **)oenv) + 1) = NULL;
+	}
+	set_var((*env + nt_tablen((void **)oenv)), value);
 }
+
+void	set_exit_code(int32_t code, char ***env)
+{
+	char	*its;
+
+	its = ft_itoa(code % 256);
+	set_env("?", env, its);
+	free(its);
+}
+
