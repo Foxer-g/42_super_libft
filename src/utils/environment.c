@@ -6,12 +6,18 @@
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 16:54:35 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/05/31 19:29:46 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/06/09 06:24:02 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+// @doc get_env
+// @kind func
+// @desc Returns value of the variable name in env.
+// @param name: const char *, name of the variable to get the value of.
+// @param env: char *const *, Environment, likely gotten from main.
+// @returns char *, The retrieved value.
 char	*get_env(const char *name, char *const *env)
 {
 	while (*env)
@@ -26,6 +32,11 @@ char	*get_env(const char *name, char *const *env)
 	return (*env);
 }
 
+// @doc set_var
+// @kind func
+// @desc Sets the var pointed to by var to val.
+// @param var: char **, Pointer to var, will likely be re-allocated.
+// @param val: char *, Value to set var to.
 void	set_var(char **var, char *val)
 {
 	*var = ft_realloc(*var, ft_strlen(*var) + ft_strlen(val) + 2);
@@ -38,6 +49,12 @@ void	set_var(char **var, char *val)
 	ft_strlcat(*var, val, ft_strlen(*var) + ft_strlen(val) + 2);
 }
 
+// @doc set_env
+// @kind func
+// @desc Set the variable name to value value in env.
+// @param name: const char *, The name of the variable to set in the env.
+// @param env: char ***, The environment to the the variable in (in heap).
+// @param value: char *, The value to set name to.
 void	set_env(const char *name, char ***env, char *value)
 {
 	char	*var;
@@ -66,6 +83,11 @@ void	set_env(const char *name, char ***env, char *value)
 	set_var((*env + nt_tablen((void **)oenv)), value);
 }
 
+// @doc set_exit_code
+// @kind func
+// @desc Sets ? in env to the stringified code.
+// @param code: int32_t, Code to set ? to.
+// @param env: char ***, Pointer to the env to set ? in.
 void	set_exit_code(int32_t code, char ***env)
 {
 	char	*its;

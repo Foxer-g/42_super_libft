@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   writev.c                                           :+:      :+:    :+:   */
+/*   writev.c                                            ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀    */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 02:56:27 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/02/18 03:26:13 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/06/09 06:37:44 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,15 @@ intmax_t	ft_writev(int fd, const t_iovec *iov, int cnt)
 }
 #else //AUTHORIZED_WRITEV
 
-intmax_t	ft_writev(int fd, const t_iovec *iov, int32_t cnt)
+// @doc ft_writev
+// @kind func
+// @desc Fake writev, Mallocs but is still atomic (unless AUTHORIZED_WRITEV).
+// @param fd: [[t_ffile]], The fd that *would* be targeted by fd.
+// @param iov: const [[t_iovec]] *, The iovecs to gather write from.
+// @param cnt: int32_t, The number of iovec to write from.
+// @returns intmax_t, The number of byte wrote.
+// I don't call writev because it's not authorized but mine is still atomic.
+intmax_t	ft_writev(t_ffile fd, const t_iovec *iov, int32_t cnt)
 {
 	const uintmax_t	len = get_total_iov_len(iov, cnt);
 	int32_t			i;

@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                      ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀    */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:22:39 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/04/08 01:49:15 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/06/09 05:59:06 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int32_t	ft_putstr_fd(const char *s, int32_t fd)
+// @doc ft_putstr_fd
+// @kind func
+// @desc Prints the string s to the fd fd.
+// @param s: const char *, String to print.
+// @param fd: [[t_ffile]], fd to print to.
+// @returns int32_t, number of chars written, negative on error.
+int32_t	ft_putstr_fd(const char *s, t_ffile fd)
 {
 	int32_t	result;
 
@@ -22,6 +28,13 @@ int32_t	ft_putstr_fd(const char *s, int32_t fd)
 	return (result);
 }
 
+// @doc ft_putstrn_fd
+// @kind func
+// @desc Prints len characters from s to the fd fd.
+// @param s: const char *, String to print.
+// @param fd: [[t_ffile]], fd to print to.
+// @param len: int32_t, number of characters to print.
+// @returns int32_t, number of chars written, negative on error.
 int32_t	ft_putstrn_fd(const char *s, int32_t fd, int32_t len)
 {
 	int32_t	result;
@@ -32,7 +45,13 @@ int32_t	ft_putstrn_fd(const char *s, int32_t fd, int32_t len)
 	return (result);
 }
 
-int32_t	ft_putstr_fd_null(const char *s, int32_t fd)
+// @doc ft_putstr_fd_null
+// @kind func
+// @desc Prints the string s to the fd fd, formats NULL as `(null)`.
+// @param s: const char *, String to print.
+// @param fd: [[t_ffile]], fd to print to.
+// @returns int32_t, number of chars written, negative on error.
+int32_t	ft_putstr_fd_null(const char *s, t_ffile fd)
 {
 	int32_t	result;
 

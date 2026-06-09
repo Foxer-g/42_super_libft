@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                                            */
-/*   ft_printf.c                                                _             */
+/*   ft_printf.c                                         ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀    */
 /*                                                            _ \'-_,#        */
 /*   By: neumann </var/spool/mail/neumann>                   _\'--','`|       */
 /*                                                           \`---`  /        */
 /*   Created: 2026/05/04 04:57:49 by neumann                  `----'`         */
-/*   Updated: 2026/05/04 04:57:50 by neumann                                  */
+/*   Updated: 2026/06/09 05:47:22 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,13 @@ static int32_t	ft_dprintf_int(t_ffile fd, const char *format, va_list args)
 	return (total_write);
 }
 
+// @doc ft_dprintf
+// @kind func
+// @desc Same behaviour as dprintf but limited to c, s, p, d, i, u, x and X.
+// @param fd: [[t_ffile]], the fd to write to.
+// @param format: char *, the format string.
+// @param ...: variadic, the args.
+// @returns int32_t, number of printed chars.
 __attribute__ ((format (printf, 2, 3)))
 int32_t	ft_dprintf(t_ffile fd, const char *format, ...)
 {
@@ -49,6 +56,12 @@ int32_t	ft_dprintf(t_ffile fd, const char *format, ...)
 	return (result);
 }
 
+// @doc ft_printf
+// @kind func
+// @desc Same behaviour as printf but limited to c, s, p, d, i, u, x and X.
+// @param format: char *, the format string.
+// @param ...: variadic, the args.
+// @returns int32_t, number of printed chars.
 __attribute__ ((format (printf, 1, 2)))
 int32_t	ft_printf(const char *format, ...)
 {

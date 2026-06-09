@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                      ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀    */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:41:33 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/04/08 01:48:04 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/06/09 05:55:03 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int32_t	ft_putnbr_fd(int32_t n, int32_t fd)
+// @doc ft_putnbr_fd
+// @kind func
+// @desc Prints the number n to the fd fd.
+// @param n: int32_t, Number to print.
+// @param fd: [[t_ffile]], fd to print to.
+// @returns int32_t, number of chars written, negative on error.
+int32_t	ft_putnbr_fd(int32_t n, t_ffile fd)
 {
 	int32_t	result;
 	int64_t	nb;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fcntl.c                                            :+:      :+:    :+:   */
+/*   fcntl.c                                             ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀    */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 23:34:55 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/02/18 02:21:01 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/06/09 06:28:59 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,23 @@
 
 #ifdef AUTHORIZED_FCNTL
 
-int32_t	ft_fcntl(int32_t fd, int32_t cmd, int32_t flags)
+int32_t	ft_fcntl(t_ffile fd, int32_t cmd, int32_t flags)
 {
 	const int32_t	result = fcntl(fd, cmd, flags);
 
 	return (result);
 }
 #else //AUTHORIZED_FCNTL
-// I don't call fcntl because it's not authorized so yea, void everything...
 
-int32_t	ft_fcntl(int32_t fd, int32_t cmd, int32_t flags)
+// @doc ft_fcntl
+// @kind func
+// @desc Fake fcntl, does nothing unless AUTHORIZED_FCNTL is set.
+// @param fd: t_ffile, The fd that *would* be targeted by fd.
+// @param cmd: int32_t, The thing that *would* be done.
+// @param flags: int32_t, The flags to apply, this was hardcoded for ft_fopen.
+// @returns int32_t, Always 0 (unless AUTHORIZED_FCNTL) is set ofc.
+// I don't call fcntl because it's not authorized so yea, void everything...
+int32_t	ft_fcntl(t_ffile fd, int32_t cmd, int32_t flags)
 {
 	(void)fd;
 	(void)cmd;

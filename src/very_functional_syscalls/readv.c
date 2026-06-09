@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   readv.c                                            :+:      :+:    :+:   */
+/*   readv.c                                             ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀    */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 02:02:37 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/03/01 05:01:16 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/06/09 06:39:15 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ intmax_t	ft_readv(int32_t fd, t_iovec *iov, uintmax_t cnt)
 	return (result);
 }
 #else //AUTHORIZED_READV
-// Not calling readv because it is not authorized but mine is still atomic
 
 intmax_t	perform_read(t_ffile fd, uintmax_t len, char **buf)
 {
@@ -40,6 +39,14 @@ intmax_t	perform_read(t_ffile fd, uintmax_t len, char **buf)
 	return (result);
 }
 
+// @doc ft_readv
+// @kind func
+// @desc Fake readv, is more costly but still atomic (unless AUTHORIZED_READV).
+// @param fd: [[t_ffile]], The fd that should be scatter read from.
+// @param iov: [[t_iovec]] *, The iovecs to read to.
+// @param cnt: int32_t, The number of iovec.
+// @returns intmax_t, The amout of bytes read.
+// Not calling readv because it is not authorized but mine is still atomic
 intmax_t	ft_readv(t_ffile fd, t_iovec *iov, int32_t cnt)
 {
 	const uintmax_t	len = get_total_iov_len(iov, cnt);

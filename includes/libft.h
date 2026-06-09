@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                                       ___        */
+/*   libft.h                                             ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀    */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:45:16 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/05/13 08:08:36 by neumann                                  */
+/*   Updated: 2026/06/09 06:12:20 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char		*find_exec(const char *name, char const **env);
 char		*get_next_line(int fd);
 uintmax_t	min(uintmax_t a, uintmax_t b);
 void		*free_nt_tab(char **str, int32_t alloc_count);
-int32_t		nt_tablen(void **tab);
+uintmax_t	nt_tablen(void **tab);
 typedef union u_ptr
 {
 	void		*ptr;
