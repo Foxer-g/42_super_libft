@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split.c                                          ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀    */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 10:30:58 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/03/10 01:43:34 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/07/20 02:02:34 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,7 @@ static int32_t	count_strs(char const *s, const char c)
 	return (count);
 }
 
-void	*free_nt_tab(char **str, const int32_t alloc_count)
-{
-	int32_t	i;
-
-	i = 0;
-	while (str && str[i] && i < alloc_count)
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
-	return (NULL);
-}
-
-static uintmax_t	get_cur_len(char const *str, const char c)
+static uintmax_t	get_cur_len(char const *str, const char c, bool preserve_mode)
 {
 	uintmax_t	i;
 	uintmax_t	j;
@@ -61,10 +47,18 @@ static uintmax_t	get_cur_len(char const *str, const char c)
 		j++;
 		i++;
 	}
+	if (preserve_mode)
+	{
+		while (str[j] && str[j] == c)
+		{
+			j++;
+			i++;
+		}
+	}
 	return (i);
 }
 
-static void	write_tab(char **tab, char const *s, char c, char *error)
+static bool	write_tab(char **tab, char const *s, char c, bool preserve_mode)
 {
 	uintmax_t	i;
 	uintmax_t	j;
@@ -74,7 +68,7 @@ static void	write_tab(char **tab, char const *s, char c, char *error)
 	strc = 0;
 	while (s[j])
 	{
-		i = get_cur_len(&s[j], c);
+		i = get_cur_len(&s[j], c, preserve_mode);
 		while (s[j] == c)
 			j++;
 		if (s[j] == '\0' && s[j - 1] == c)
@@ -83,18 +77,18 @@ static void	write_tab(char **tab, char const *s, char c, char *error)
 		if (!tab[strc++])
 		{
 			free_nt_tab(tab, strc - 1);
-			*error = 1;
-			return ;
+			return (true);
 		}
 		j = j + i;
 	}
+	return (false);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**result;
 	int32_t	strc;
-	char	error;
+	bool	error;
 
 	error = 0;
 	if (!s)
@@ -103,7 +97,26 @@ char	**ft_split(char const *s, char c)
 	result = ft_calloc(strc + 1, sizeof(char *));
 	if (!result)
 		return (NULL);
-	write_tab(result, s, c, &error);
+	error = write_tab(result, s, c, false);
+	if (error)
+		return (NULL);
+	return (result);
+}
+
+char	**ft_preserving_split(char const *s, char c)
+{
+	char	**result;
+	int32_t	strc;
+	bool	error;
+
+	error = 0;
+	if (!s)
+		return (NULL);
+	strc = count_strs(s, c);
+	result = ft_calloc(strc + 1, sizeof(char *));
+	if (!result)
+		return (NULL);
+	error = write_tab(result, s, c, true);
 	if (error)
 		return (NULL);
 	return (result);

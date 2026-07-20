@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_alloc.c                                          ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀    */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 15:31:48 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/03/20 01:07:48 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/07/20 01:54:37 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,18 @@ void	*ft_calloc(uintmax_t nmemb, uintmax_t size)
 		return (NULL);
 	ft_bzero(ptr, nmemb * size);
 	return ((void *)ptr);
+}
+
+void	*free_nt_tab(char **str, const int32_t alloc_count)
+{
+	int32_t	i;
+
+	i = 0;
+	while (str && str[i] && i < alloc_count)
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+	return (NULL);
 }

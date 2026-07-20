@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:45:16 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/06/09 06:12:20 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/07/20 02:02:48 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define DEC_BASE "0123456789"
 # define HEX_LOW "0123456789abcdef"
 # define HEX_UPP "0123456789ABCDEF"
+
 
 typedef bool	(*t_validator_fn)(int32_t val);
 
@@ -64,6 +65,7 @@ char		*ft_substr(char const *s, uint32_t start, size_t len);
 char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_strtrim(char const *s1, char const *set);
 char		**ft_split(char const *s, char c);
+char		**ft_preserving_split(char const *s, char c);
 char		*ft_itoa(int32_t n);
 char		*ft_strmapi(char const *s, char (*f)(uint32_t, char));
 void		ft_striteri(char *s, void (*f)(uint32_t, char*));

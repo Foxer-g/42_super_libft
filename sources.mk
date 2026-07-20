@@ -24,7 +24,7 @@ STR_CHK_FILES = str_comparison.c is_charset.c is_chartype.c is_valid.c
 STR_CVN_FILES = int_conversion.c
 STR_MNP_FILES = basic_manipulation.c
 STR_NEW_FILES = ft_split.c ft_strjoin.c ft_strtrim.c based_on_existing.c
-UTL_FILES = environment.c math.c
+UTL_FILES = environment.c math.c execution.c
 VFS_FILES = fcntl.c readv.c writev.c
 
 FFILE_SOURCES = $(addprefix $(FIL_SRC_DIR), $(FFL_FILES))

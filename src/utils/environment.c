@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 16:54:35 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/06/09 06:24:02 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/06/11 08:16:21 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ void	set_env(const char *name, char ***env, char *value)
 	}
 	if (!var)
 	{
-		*env = ft_realloc(*env, (nt_tablen((void **)oenv) + 2) * sizeof(char *));
+		*env = ft_realloc(*env, (nt_tablen((void **)oenv) + 2)
+				* sizeof(char *));
 		var = ft_calloc(ft_strlen(name) + 2, sizeof(char));
 		*(*env + nt_tablen((void **)oenv)) = var;
 		ft_strlcpy(var, name, ft_strlen(name) + 2);
@@ -96,4 +97,3 @@ void	set_exit_code(int32_t code, char ***env)
 	set_env("?", env, its);
 	free(its);
 }
-
