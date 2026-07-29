@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ffilelist.c                                     :+:      :+:    :+:   */
+/*   ft_ffilelist.c                                      ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀    */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 21:59:22 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/03/01 04:41:44 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/07/29 16:36:15 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	remove_file(t_ffile file)
 	}
 }
 
-void	clear_filelist(void)
+void	ft_clear_filelist(void)
 {
 	t_ffile *const	filelist = get_filelist();
 	uint32_t		i;

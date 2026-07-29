@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 16:54:35 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/06/11 08:16:21 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/07/29 16:28:01 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 // @param name: const char *, name of the variable to get the value of.
 // @param env: char *const *, Environment, likely gotten from main.
 // @returns char *, The retrieved value.
-char	*get_env(const char *name, char *const *env)
+char	*ft_get_env(const char *name, char *const *env)
 {
 	while (*env)
 	{
@@ -37,7 +37,7 @@ char	*get_env(const char *name, char *const *env)
 // @desc Sets the var pointed to by var to val.
 // @param var: char **, Pointer to var, will likely be re-allocated.
 // @param val: char *, Value to set var to.
-void	set_var(char **var, char *val)
+void	ft_set_var(char **var, char *val)
 {
 	*var = ft_realloc(*var, ft_strlen(*var) + ft_strlen(val) + 2);
 	while (**var && **var != '=')
@@ -55,7 +55,7 @@ void	set_var(char **var, char *val)
 // @param name: const char *, The name of the variable to set in the env.
 // @param env: char ***, The environment to the the variable in (in heap).
 // @param value: char *, The value to set name to.
-void	set_env(const char *name, char ***env, char *value)
+void	ft_set_env(const char *name, char ***env, char *value)
 {
 	char	*var;
 	char	**oenv;
@@ -81,7 +81,7 @@ void	set_env(const char *name, char ***env, char *value)
 		ft_strlcpy(var, name, ft_strlen(name) + 2);
 		*(*env + nt_tablen((void **)oenv) + 1) = NULL;
 	}
-	set_var((*env + nt_tablen((void **)oenv)), value);
+	ft_set_var((*env + nt_tablen((void **)oenv)), value);
 }
 
 // @doc set_exit_code
@@ -89,11 +89,28 @@ void	set_env(const char *name, char ***env, char *value)
 // @desc Sets ? in env to the stringified code.
 // @param code: int32_t, Code to set ? to.
 // @param env: char ***, Pointer to the env to set ? in.
-void	set_exit_code(int32_t code, char ***env)
+void	ft_set_exit_code(int32_t code, char ***env)
 {
 	char	*its;
 
 	its = ft_itoa(code % 256);
-	set_env("?", env, its);
+	ft_set_env("?", env, its);
 	free(its);
+}
+
+// @doc ft_copy_env
+// @kind func
+// @desc Copies the char ** tab provided as env and returns the copy.
+// @param env: char **, Pointer to the tab to copy.
+// @returns char **
+char	**ft_copy_env(const char **env)
+{
+	char **result;
+	char **oresult;
+
+	result = ft_calloc(nt_tablen((void *)env), sizeof(char *));
+	oresult = result;
+	while (*env)
+		*result++ = ft_strdup(*env++);
+	return (oresult);
 }

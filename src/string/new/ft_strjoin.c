@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                        ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀    */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 18:09:33 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/02/18 01:04:45 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/07/29 16:35:43 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (result);
 %>
 
-char	*extend(char *to_extend, char *extender)
+char	*ft_extend(char *to_extend, char *extender)
 <%
 	const char	*oto_extend = to_extend;
 	char		*result;

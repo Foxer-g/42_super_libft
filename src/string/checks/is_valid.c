@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_valid.c                                                    ___        */
+/*   is_valid.c                                          ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀    */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 10:05:29 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/05/14 05:34:38 by neumann                                  */
+/*   Updated: 2026/07/29 16:15:56 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ const t_validator_fn	g_validators[] = {
 [ASCII] = ft_isascii, [ALNUM] = ft_isalnum
 };
 
-bool	str_is_valid(char *str, t_validator_fn validator)
+bool	ft_str_is_valid(char *str, t_validator_fn validator)
 {
 	bool	result;
 

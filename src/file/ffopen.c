@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ffopen.c                                           :+:      :+:    :+:   */
+/*   ffopen.c                                            ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀    */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 21:48:34 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/03/15 20:34:28 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/07/29 15:26:20 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_ffile	ft_ffopen(char *filename, const char *mode)
 	return (file);
 }
 
-t_ffile	to_ffile(int32_t fd)
+t_ffile	ft_to_ffile(int32_t fd)
 {
 	t_ffile	file;
 

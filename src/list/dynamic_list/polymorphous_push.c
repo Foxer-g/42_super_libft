@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   typed_push.c                                       :+:      :+:    :+:   */
+/*   polymorphous_push.c                                 ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀    */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 00:37:58 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/03/20 01:12:38 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/07/29 16:37:05 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	cast_set(void *arr, t_elem elem)
 		((long double *)arr)[header->count++] = elem.value.ld;
 }
 
-void	arr_push(void **arr, t_elem elem)
+void	ft_arr_push(void **arr, t_elem elem)
 {
 	t_header	*header;
 

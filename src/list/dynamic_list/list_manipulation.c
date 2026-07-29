@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_manipulation.c                                :+:      :+:    :+:   */
+/*   list_manipulation.c                                 ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀    */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 05:34:50 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/03/20 01:17:12 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/07/29 16:36:56 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static uint16_t	get_size(t_type type)
 	return (UINT16_MAX);
 }
 
-void	*extend_array(void **arr)
+void	*ft_extend_array(void **arr)
 {
 	t_header	*header;
 
@@ -44,7 +44,7 @@ void	*extend_array(void **arr)
 	return (header);
 }
 
-void	*init_array(t_elem elem)
+void	*ft_init_array(t_elem elem)
 {
 	t_header	*result;
 
@@ -56,7 +56,7 @@ void	*init_array(t_elem elem)
 	return (result + 1);
 }
 
-void	arr_free(void **arr)
+void	ft_arr_free(void **arr)
 {
 	free(((t_header *)*arr) - 1);
 	*arr = NULL;
