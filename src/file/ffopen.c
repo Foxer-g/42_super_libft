@@ -6,12 +6,17 @@
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 21:48:34 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/07/29 15:26:20 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/07/30 20:03:22 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "int_file.h"
 
+// @doc fmodeflags
+// @kind func
+// @desc Yoinked from musl with some norm shaped adjustments.
+// @param mode: const char *, The mode string.
+// @returns int32_t, The value corresponding to the provided flags.
 static int32_t	fmodeflags(const char *mode)
 {
 	int32_t	flags;
@@ -35,6 +40,12 @@ static int32_t	fmodeflags(const char *mode)
 	return (flags);
 }
 
+// @doc ft_ffopen
+// @kind func
+// @desc Fake fopen, actually just an open with extra steps.
+// @param filename: char *, Name of the file to open.
+// @param mode: const char *, Mode in which to open the file.
+// @returns [[t_ffile]], The opened file's fd.
 t_ffile	ft_ffopen(char *filename, const char *mode)
 {
 	t_ffile	file;
@@ -48,11 +59,37 @@ t_ffile	ft_ffopen(char *filename, const char *mode)
 	return (file);
 }
 
-t_ffile	ft_to_ffile(int32_t fd)
+// @doc ft_to_ffile
+// @kind func
+// @desc Registers an fd as though it was opened with ft_ffopen.
+// @param fd: [[t_ffile]], fd to register.
+// @returns [[t_ffile]], The registered fd (identical).
+t_ffile	ft_to_ffile(t_ffile fd)
 {
 	t_ffile	file;
 
 	file = fd;
 	append_file(file);
 	return (file);
+}
+
+// @doc ft_pipe
+// @kind func
+// @desc Does the same thing as pipe but registers the fds.
+// @param fds: [[t_ffile]][2], The target in which to put the pipe.
+// @returns int32_t, Same return code as pipe. 
+int32_t ft_pipe(t_ffile fds[2])
+{
+	int32_t	res;
+	int32_t err;
+
+	res = pipe(fds);
+	err = errno;
+	if (!res)
+	{
+		ft_to_ffile(fds[0]);
+		ft_to_ffile(fds[1]);
+	}
+	errno = err;
+	return (res);
 }

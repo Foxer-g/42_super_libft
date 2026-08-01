@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line.c                                     ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀    */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 04:11:03 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/02/28 02:20:14 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/07/30 20:20:40 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int8_t	readline(char *buffer, char **persistant, int fd)
 	return (1);
 }
 
-char	*get_line_from_stash(char **stash)
+static char	*get_line_from_stash(char **stash)
 {
 	char	*line;
 	char	*nstash;
@@ -51,7 +51,12 @@ char	*get_line_from_stash(char **stash)
 	return (line);
 }
 
-char	*get_next_line(int fd)
+// @doc get_next_line
+// @kind func
+// @desc Its get next line. It gets a line from the provided fd.
+// @param fd: [[t_ffile]], The file to read a line from.
+// @returns char *, The line.
+char	*get_next_line(t_ffile fd)
 {
 	static char	*stash;
 	char		buf[BUFFER_SIZE + 1];
