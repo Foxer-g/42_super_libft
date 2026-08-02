@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 10:30:58 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/07/20 02:02:34 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/01 17:27:14 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static bool	write_tab(char **tab, char const *s, char c, bool preserve_mode)
 		tab[strc] = ft_substr(&s[j], 0, i);
 		if (!tab[strc++])
 		{
-			free_nt_tab(tab, strc - 1);
+			ft_free_nt_tab(tab, strc - 1);
 			return (true);
 		}
 		j = j + i;

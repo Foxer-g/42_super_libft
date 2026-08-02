@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 00:37:58 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/07/29 16:37:05 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/01 17:26:59 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void	ft_arr_push(void **arr, t_elem elem)
 	t_header	*header;
 
 	if (!*arr)
-		*arr = init_array(elem);
+		*arr = ft_init_array(elem);
 	header = (t_header *)(*arr) - 1;
 	if (header->count >= (header->capacity - 1))
-		extend_array(*arr);
+		ft_extend_array(*arr);
 	cast_set(*arr, elem);
 }

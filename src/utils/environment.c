@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 16:54:35 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/07/29 16:28:01 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/01 17:27:51 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,14 @@ void	ft_set_env(const char *name, char ***env, char *value)
 	}
 	if (!var)
 	{
-		*env = ft_realloc(*env, (nt_tablen((void **)oenv) + 2)
+		*env = ft_realloc(*env, (ft_nt_tablen((void **)oenv) + 2)
 				* sizeof(char *));
 		var = ft_calloc(ft_strlen(name) + 2, sizeof(char));
-		*(*env + nt_tablen((void **)oenv)) = var;
+		*(*env + ft_nt_tablen((void **)oenv)) = var;
 		ft_strlcpy(var, name, ft_strlen(name) + 2);
-		*(*env + nt_tablen((void **)oenv) + 1) = NULL;
+		*(*env + ft_nt_tablen((void **)oenv) + 1) = NULL;
 	}
-	ft_set_var((*env + nt_tablen((void **)oenv)), value);
+	ft_set_var((*env + ft_nt_tablen((void **)oenv)), value);
 }
 
 // @doc set_exit_code
@@ -108,7 +108,7 @@ char	**ft_copy_env(const char **env)
 	char **result;
 	char **oresult;
 
-	result = ft_calloc(nt_tablen((void *)env), sizeof(char *));
+	result = ft_calloc(ft_nt_tablen((void *)env), sizeof(char *));
 	oresult = result;
 	while (*env)
 		*result++ = ft_strdup(*env++);

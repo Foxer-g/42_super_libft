@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 02:02:37 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/06/09 06:39:15 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/01 17:29:08 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ intmax_t	ft_readv(t_ffile fd, t_iovec *iov, int32_t cnt)
 	i = 0;
 	while (i < cnt && rem > 0)
 	{
-		ft_memcpy(iov[cnt].iov_base, tmp, min(iov[cnt].iov_len, rem));
+		ft_memcpy(iov[cnt].iov_base, tmp, ft_min(iov[cnt].iov_len, rem));
 		tmp += iov[cnt].iov_len;
-		rem -= min(iov[cnt].iov_len, result);
+		rem -= ft_min(iov[cnt].iov_len, result);
 		i++;
 	}
 	free(tmp - len);

@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 04:11:03 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/07/30 20:20:40 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/01 17:26:09 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int8_t	readline(char *buffer, char **persistant, int fd)
 			return (!status);
 		}
 		buffer[status] = '\0';
-		*persistant = extend(*persistant, buffer);
+		*persistant = ft_extend(*persistant, buffer);
 	}
 	return (1);
 }

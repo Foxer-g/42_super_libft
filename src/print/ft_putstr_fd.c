@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:22:39 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/06/09 05:59:06 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/01 17:28:42 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int32_t	ft_putstrn_fd(const char *s, int32_t fd, int32_t len)
 
 	if (!s)
 		return (0);
-	result = write(fd, s, min(ft_strlen(s), len));
+	result = write(fd, s, ft_min(ft_strlen(s), len));
 	return (result);
 }
 
