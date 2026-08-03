@@ -6,7 +6,7 @@
 /*   By: neumann </var/spool/mail/neumann>                   _\'--','`|       */
 /*                                                           \`---`  /        */
 /*   Created: 2026/05/04 04:57:33 by neumann                  `----'`         */
-/*   Updated: 2026/06/09 06:06:15 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/03 23:28:19 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int32_t	ft_putuint_base_fd(uint64_t n, char *base, t_ffile fd, bool *error)
 	if (n >= base_length)
 		result += ft_putuint_base_fd(n / base_length, base, fd, error);
 	result += ft_putchar_fd(base[n % base_length], fd);
-	if (result < 0)
+	if (result < 0 && error)
 		*error = true;
 	return (result);
 }

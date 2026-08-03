@@ -6,7 +6,7 @@
 /*   By: neumann </var/spool/mail/neumann>               ⣿⣖⠾⢗⣶⣾⣿⡇⠿⠷⠸⠿⢟⣛⡵⣫     */
 /*                                                       ⠙⢿⣿⣿⣿⣿⣿⣿⣮⣭⣭⣭⡭⣶⣾⣿     */
 /*   Created: 2026/05/31 19:29:15 by neumann            ⠀⠀⣿⣿⣿⠛⠛⠛⣿⣿⣿⠁⠀⠀⠉⠁      */
-/*   Updated: 2026/07/29 16:35:26 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/03 23:15:03 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@ char	*ft_get_executable(const char *str)
 {
 	char	*result;
 
-	result = ft_calloc(ft_fwlen(str) + 2, sizeof(char));
-	result[0] = '/';
-	ft_strlcat(result, str, ft_fwlen(str) + 2);
+	result = ft_calloc(ft_fwlen(str) + 1, sizeof(char));
+	ft_strlcat(result, str, ft_fwlen(str) + 1);
 	return (result);
 }
 
@@ -31,19 +30,19 @@ char	*ft_get_executable(const char *str)
 // @kind func
 // @desc Returns the path to the executable name.
 // @param name: const char *, name of the executable prepended with a /.
-// @param env: char const **, Environment, most likely gotten through main.
+// @param path: char const **, PATH, most likely gotten through main.
 // @returns char *, Path to the executable.
-char	*ft_find_exec(const char *name, char const **env)
+char	*ft_find_exec(const char *name, char const **path)
 {
 	char	*result;
 
-	while (env && *env)
+	while (path && *path)
 	{
-		result = ft_strjoin(*env, name);
+		result = ft_extend(ft_strjoin(*path, "/"), (char *)name);
 		if (!access(result, X_OK))
 			return (result);
 		free(result);
-		env++;
+		path++;
 	}
 	result = ft_strdup(name);
 	return (result);
