@@ -26,8 +26,9 @@ var
     path: string = getEnv("PATH")
     splitPath: cstringArray = allocCStringArray(path.split(":"))
 
-echo find_exec("ls", splitPath)
+echo path.split(":")
+echo ft_find_exec("ls", splitPath)
 
-#assert(find_exec("ls", cenv) == "/usr/bin/ls")
+assert(ft_find_exec("ls", splitPath) == "/usr/bin/ls")
 
 deallocCStringArray(splitPath)

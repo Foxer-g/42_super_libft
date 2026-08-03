@@ -21,6 +21,8 @@ discard """
 import
     ../[libft, glibc]
 
-assert(get_executable("ls -l") == "/ls")
-assert(get_executable("cat -e") == "/cat")
-assert(get_executable("/usr/bin/zsh") == "//usr/bin/zsh")
+echo ft_get_executable("ls -l")
+
+assert(ft_get_executable("ls -l") == "ls")
+assert(ft_get_executable("cat -e") == "cat")
+assert(ft_get_executable("/usr/bin/zsh") == "/usr/bin/zsh")

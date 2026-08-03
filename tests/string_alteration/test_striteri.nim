@@ -34,13 +34,13 @@ var
     [makeMutableCString("frbehjfgzeuihbui"),  "Hello World!"]
   ]
 
-proc toHelloWorld(index: cuint, cptr: var cchar) =
-  const hello: cstring = "Hello World!"
-  if index < hello.len:
-    cptr = hello[index]
-  else:
-    cptr = cchar(0)
 
 for i in tests:
+  proc toHelloWorld(index: cuint, cptr: var cchar) {.closure.} =
+    const hello: cstring = "Hello World!"
+    if index < hello.len:
+      cptr = hello[index]
+    else:
+      cptr = cchar(0)
   ft_striteri(i[0], toHelloWorld)
   assert(i[0] == i[1])

@@ -23,7 +23,6 @@ import
     std/os
 
 const
-  CPATH: cstring = "PATH="
   PATH: string = "PATH"
 var
     env: seq[string]
@@ -34,6 +33,6 @@ for key, val in envPairs():
 
 cenv = allocCStringArray(env)
 
-assert($ c_get_env(CPATH, cenv) == getEnv(PATH))
+assert($ ft_get_env(PATH, cenv) == getEnv(PATH))
 
 deallocCStringArray(cenv)

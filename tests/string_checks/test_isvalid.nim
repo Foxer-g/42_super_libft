@@ -44,4 +44,4 @@ for i in 0..100:
   tests.add(makeRandomString(rand(1..25)))
 
 for i in tests:
-  assert(str_is_valid(cstring i, ft_isascii) == nim_str_is_valid(i))
+  assert(ft_str_is_valid(cstring i, ft_isascii) == nim_str_is_valid(i))

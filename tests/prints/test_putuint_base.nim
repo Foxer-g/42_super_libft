@@ -20,14 +20,21 @@ discard """
   disabled: "win"
 """
 import
-    ../[libft, glibc]
+  ../[libft, glibc]
 
 var
-    testFile: File = open("/tmp/nbrtests", fmWrite)
-    testFileHandle: t_ffile = testFile.getFileHandle()
+  testFile: File = open("/tmp/nbrtests", fmWrite)
+  testFileHandle: t_ffile = testFile.getFileHandle()
+  errorThingy: bool
 
-assert(ft_putuint_base_fd(132, "0123456789", testFileHandle, nil)               == 3)
-assert(ft_putuint_base_fd(2147483647, "0123456789ABCDEF", testFileHandle, nil)  == 8)
-assert(ft_putuint_base_fd(0, "01", testFileHandle, nil)                         == 1)
-assert(ft_putuint_base_fd(158, "01", stdout.getFileHandle(), nil)               == 8)
-assert(ft_putuint_base_fd(15, "1564489", -1, nil)                               == -2)
+errorThingy = false
+assert(ft_putuint_base_fd(132, "0123456789", testFileHandle, addr errorThingy)               == 3)
+assert(errorThingy == false)
+assert(ft_putuint_base_fd(2147483647, "0123456789ABCDEF", testFileHandle, addr errorThingy)  == 8)
+assert(errorThingy == false)
+assert(ft_putuint_base_fd(0, "01", testFileHandle, addr errorThingy)                         == 1)
+assert(errorThingy == false)
+assert(ft_putuint_base_fd(158, "01", stdout.getFileHandle(), addr errorThingy)               == 8)
+assert(errorThingy == false)
+assert(ft_putuint_base_fd(15, "1564489", -1, addr errorThingy)                               == -2)
+assert(errorThingy == true)
