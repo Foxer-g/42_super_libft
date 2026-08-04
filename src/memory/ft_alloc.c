@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 15:31:48 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/08/04 17:34:08 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/04 22:46:07 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ void	*ft_realloc(void *ptr, uintmax_t size)
 	return (new_ptr);
 }
 
-void	*ft_recalloc(void *ptr, uintmax_t nmemb, uintmax_t size)
+void	*ft_recalloc(void *ptr, uintmax_t old, uintmax_t nmemb, uintmax_t size)
 {
-	void	*new_ptr;
+	void		*new_ptr;
 
 	new_ptr = ft_calloc(nmemb, size);
-	ft_memcpy(new_ptr, ptr, ft_strlen(ptr));
+	ft_memcpy(new_ptr, ptr, old);
 	free(ptr);
 	return (new_ptr);
 }
