@@ -6,21 +6,11 @@
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 15:31:48 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/07/29 16:05:18 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/04 17:34:08 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-void	*ft_realloc(void *ptr, size_t size)
-{
-	void	*new_ptr;
-
-	new_ptr = malloc(size);
-	ft_memcpy(new_ptr, ptr, ft_strlen(ptr));
-	free(ptr);
-	return (new_ptr);
-}
 
 void	*ft_calloc(uintmax_t nmemb, uintmax_t size)
 {
@@ -33,6 +23,26 @@ void	*ft_calloc(uintmax_t nmemb, uintmax_t size)
 		return (NULL);
 	ft_bzero(ptr, nmemb * size);
 	return ((void *)ptr);
+}
+
+void	*ft_realloc(void *ptr, uintmax_t size)
+{
+	void	*new_ptr;
+
+	new_ptr = malloc(size);
+	ft_memcpy(new_ptr, ptr, ft_strlen(ptr));
+	free(ptr);
+	return (new_ptr);
+}
+
+void	*ft_recalloc(void *ptr, uintmax_t nmemb, uintmax_t size)
+{
+	void	*new_ptr;
+
+	new_ptr = ft_calloc(nmemb, size);
+	ft_memcpy(new_ptr, ptr, ft_strlen(ptr));
+	free(ptr);
+	return (new_ptr);
 }
 
 void	*ft_free_nt_tab(char **str, const int32_t alloc_count)
