@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 16:54:35 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/08/05 03:08:44 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/05 23:05:09 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,17 @@ char	*ft_get_env(const char *name, char *const *env)
 // @param val: char *, Value to set var to.
 void	ft_set_var(char **var, char *val)
 {
-	*var = ft_realloc(*var, ft_strlen(*var) + ft_strlen(val) + 2);
-	while (**var && **var != '=')
-		(*var)++;
-	if (**var == '=')
-		(*var)++;
-	else
-		**var = '=';
-	ft_strlcat(*var, val, ft_strlen(*var) + ft_strlen(val) + 2);
+	size_t	var_start;
+	size_t	value_len;
+
+	var_start = 0;
+	while ((*var)[var_start] && (*var)[var_start] != '=')
+		var_start++;
+	value_len = ft_strlen(val);
+	*var = ft_recalloc(*var, ft_strlen(*var),
+		var_start + 1 + value_len + 1, sizeof(char));
+	(*var)[var_start] = '=';
+	ft_strlcpy(*var + var_start + 1, val, value_len + 1);
 }
 
 // @doc set_env
@@ -57,32 +60,30 @@ void	ft_set_var(char **var, char *val)
 // @param value: char *, The value to set name to.
 void	ft_set_env(const char *name, char ***env, char *value)
 {
-	char	*var;
+	char	**var;
 	char	**oenv;
+	size_t	len;
 
 	var = NULL;
+	len = 0;
 	oenv = *env;
 	while (*oenv)
 	{
-		if (!ft_strncmp(name, *oenv, ft_strlen(name)))
-		{
-			if (*((*oenv) + ft_strlen(name)) == '=')
-			{
-				var = *oenv;
-			}
-		}
+		if (!ft_strncmp(name, *oenv, ft_strlen(name))
+			&& (*oenv)[ft_strlen(name)] == '=')
+			var = oenv;
 		oenv++;
+		len++;
 	}
 	if (!var)
 	{
-		*env = ft_realloc(*env, (ft_nt_tablen((void **)oenv) + 2)
-				* sizeof(char *));
-		var = ft_calloc(ft_strlen(name) + 2, sizeof(char));
-		*(*env + ft_nt_tablen((void **)oenv)) = var;
-		ft_strlcpy(var, name, ft_strlen(name) + 2);
-		*(*env + ft_nt_tablen((void **)oenv) + 1) = NULL;
+		*env = ft_realloc(*env, (len + 2) * sizeof(char *));
+		(*env)[len] = ft_calloc(ft_strlen(name) + 2, sizeof(char));
+		ft_strlcpy((*env)[len], name, ft_strlen(name) + 1);
+		(*env)[len + 1] = NULL;
+		var = &(*env)[len];
 	}
-	ft_set_var((*env + ft_nt_tablen((void **)oenv)), value);
+	ft_set_var(var, value);
 }
 
 // @doc set_exit_code
@@ -96,7 +97,6 @@ void	ft_set_exit_code(int32_t code, char ***env)
 
 	its = ft_itoa(code % 256);
 	ft_set_env("?", env, its);
-	free(its);
 }
 
 // @doc ft_copy_env
