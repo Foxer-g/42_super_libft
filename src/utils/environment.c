@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 16:54:35 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/08/04 00:52:54 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/05 03:08:44 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ char	**ft_copy_env(const char **env)
 	char **result;
 	char **oresult;
 
-	result = ft_calloc(ft_nt_tablen((void *)env), sizeof(char *));
+	result = ft_calloc(ft_nt_tablen((void *)env) + 1, sizeof(char *));
 	oresult = result;
 	while (*env)
 		*result++ = ft_strdup(*env++);
