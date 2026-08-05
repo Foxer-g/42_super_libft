@@ -1,12 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
+/*   environment.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/08/05 22:45:52 by rboutelo          #+#    #+#             */
+/*   Updated: 2026/08/05 23:52:54 by rboutelo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
 /*   environment.c                                       ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀    */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 16:54:35 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/08/05 23:05:09 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/05 23:39:50 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +89,7 @@ void	ft_set_env(const char *name, char ***env, char *value)
 	}
 	if (!var)
 	{
-		*env = ft_realloc(*env, (len + 2) * sizeof(char *));
+		*env = ft_recalloc(*env, ft_nt_tablen((void *)*env) * sizeof(char *), (len + 2), sizeof(char *));
 		(*env)[len] = ft_calloc(ft_strlen(name) + 2, sizeof(char));
 		ft_strlcpy((*env)[len], name, ft_strlen(name) + 1);
 		(*env)[len + 1] = NULL;
