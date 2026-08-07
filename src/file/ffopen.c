@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 21:48:34 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/07/30 20:03:22 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/07 21:32:18 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,10 @@ t_ffile	ft_to_ffile(t_ffile fd)
 // @desc Does the same thing as pipe but registers the fds.
 // @param fds: [[t_ffile]][2], The target in which to put the pipe.
 // @returns int32_t, Same return code as pipe. 
-int32_t ft_pipe(t_ffile fds[2])
+int32_t	ft_pipe(t_ffile fds[2])
 {
 	int32_t	res;
-	int32_t err;
+	int32_t	err;
 
 	res = pipe(fds);
 	err = errno;

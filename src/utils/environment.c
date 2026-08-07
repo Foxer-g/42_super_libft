@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/05 22:45:52 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/08/07 04:11:20 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/07 21:31:08 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_set_var(char **var, char *val)
 		var_start++;
 	value_len = ft_strlen(val);
 	*var = ft_recalloc(*var, ft_strlen(*var),
-		var_start + 1 + value_len + 1, sizeof(char));
+			var_start + 1 + value_len + 1, sizeof(char));
 	(*var)[var_start] = '=';
 	ft_strlcpy(*var + var_start + 1, val, value_len + 1);
 }
@@ -89,7 +89,8 @@ void	ft_set_env(const char *name, char ***env, char *value)
 	}
 	if (!var)
 	{
-		*env = ft_recalloc(*env, ft_nt_tablen((void *)*env) * sizeof(char *), (len + 2), sizeof(char *));
+		*env = ft_recalloc(*env, ft_nt_tablen((void *)*env) * sizeof(char *),
+				(len + 2), sizeof(char *));
 		(*env)[len] = ft_calloc(ft_strlen(name) + 2, sizeof(char));
 		ft_strlcpy((*env)[len], name, ft_strlen(name) + 1);
 		(*env)[len + 1] = NULL;
@@ -119,8 +120,8 @@ void	ft_set_exit_code(int32_t code, char ***env)
 // @returns char **
 char	**ft_copy_env(const char **env)
 {
-	char **result;
-	char **oresult;
+	char	**result;
+	char	**oresult;
 
 	result = ft_calloc(ft_nt_tablen((void *)env) + 1, sizeof(char *));
 	oresult = result;

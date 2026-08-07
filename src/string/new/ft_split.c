@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 10:30:58 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/08/01 17:27:14 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/07 21:31:38 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ static int32_t	count_strs(char const *s, const char c)
 	return (count);
 }
 
-static uintmax_t	get_cur_len(char const *str, const char c, bool preserve_mode)
+static uintmax_t	get_cur_len(char const *str, const char c,
+	bool preserve_mode)
 {
 	uintmax_t	i;
 	uintmax_t	j;
