@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 04:11:03 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/08/01 17:26:09 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/07 05:01:16 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,12 @@ char	*get_next_line(t_ffile fd)
 	char		buf[BUFFER_SIZE + 1];
 	char		*str;
 	int8_t		success;
-	static int	last_fd;
 
-	if (!last_fd)
-		last_fd = fd;
-	if (fd != last_fd && fd)
+	if (fd < 0)
+	{
+		stash = NULL;
 		return (NULL);
+	}
 	ft_bzero(buf, sizeof(buf));
 	success = readline((char *)&buf, &stash, fd);
 	if (!success)
