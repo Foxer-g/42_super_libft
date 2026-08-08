@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/05 22:45:52 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/08/07 21:31:08 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/08 05:30:19 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ void	ft_set_var(char **var, char *val)
 // @param value: char *, The value to set name to.
 void	ft_set_env(const char *name, char ***env, char *value)
 {
-	char	**var;
-	char	**oenv;
-	size_t	len;
+	char		**var;
+	char		**oenv;
+	uintmax_t	len;
 
 	var = NULL;
 	len = 0;
@@ -97,6 +97,28 @@ void	ft_set_env(const char *name, char ***env, char *value)
 		var = &(*env)[len];
 	}
 	ft_set_var(var, value);
+}
+
+void	ft_set_env_no_val(const char *name, char ***env)
+{
+	char		**oenv;
+	uintmax_t	len;
+
+	len = 0;
+	oenv = *env;
+	while (*oenv)
+	{
+		if (!ft_strncmp(name, *oenv, ft_strlen(name))
+			&& (*oenv)[ft_strlen(name)] == '=')
+			return ;
+		oenv++;
+		len++;
+	}
+	*env = ft_recalloc(*env, ft_nt_tablen((void *)*env) * sizeof(char *),
+			(len + 2), sizeof(char *));
+	(*env)[len] = ft_calloc(ft_strlen(name) + 2, sizeof(char));
+	ft_strlcpy((*env)[len], name, ft_strlen(name) + 1);
+	(*env)[len + 1] = NULL;
 }
 
 // @doc set_exit_code
