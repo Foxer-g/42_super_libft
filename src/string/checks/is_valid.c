@@ -6,13 +6,14 @@
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 10:05:29 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/07/29 16:15:56 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/07 23:43:28 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-const t_validator_fn	g_validators[] = {
+const
+	t_validator_fn g_validators[] = {
 [DIGIT] = ft_isdigit, [ALPHA] = ft_isalpha,
 [SPACE] = ft_isspace, [PRINT] = ft_isprint,
 [ASCII] = ft_isascii, [ALNUM] = ft_isalnum
