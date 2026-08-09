@@ -26,10 +26,10 @@ import
 randomize()
 
 var
-  tests: seq[int] = @[-2147483648, 2147483647]
+  tests: seq[int64] = @[-9223372036854775807, 9223372036854775806]
 
 for i in 0..100:
-  tests.add(rand(-2147483648..2147483647))
+  tests.add(rand(-9223372036854775807..9223372036854775806))
 
 for i in tests:
-  assert(ft_atoi(cstring($ i)) == cint i)
+  assert(ft_atol(cstring($ i)) == clong i)

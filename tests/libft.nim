@@ -3,6 +3,7 @@ import
 
 type
   int32_t = cint
+  int64_t = clong
   t_ffile* = cint
   uint32_t = cuint
   uint64_t = culong
@@ -78,6 +79,7 @@ proc ft_strnstr*(big: cstring; little: cstring; len: csize_t): cstring {.importc
 ##  ****************
 
 proc ft_atoi*(str: cstring): int32_t {.importc.}
+proc ft_atol*(str: cstring): int64_t {.importc.}
 proc ft_itoa*(n: int32_t): cstring {.importc.}
 ##  ****************
 ##    MANIPULATION

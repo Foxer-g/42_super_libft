@@ -6,12 +6,35 @@
 /*   By: neumann </var/spool/mail/neumann>               ⣿⣖⠾⢗⣶⣾⣿⡇⠿⠷⠸⠿⢟⣛⡵⣫     */
 /*                                                       ⠙⢿⣿⣿⣿⣿⣿⣿⣮⣭⣭⣭⡭⣶⣾⣿     */
 /*   Created: 2026/05/31 19:29:15 by neumann            ⠀⠀⣿⣿⣿⠛⠛⠛⣿⣿⣿⠁⠀⠀⠉⠁      */
-/*   Updated: 2026/08/08 04:54:28 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/09 00:06:53 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+int32_t	ft_get_exit_code_from_status(int32_t status)
+{
+	int32_t	signal;
+
+	if (WIFSIGNALED(status))
+	{
+		signal = WTERMSIG(status);
+		if (signal != SIGINT && signal != SIGPIPE)
+		{
+			if (status & 0x80)
+				ft_dprintf(2, "(core dumped)");
+		}
+		ft_dprintf(2, "\n");
+		return (signal + 128);
+	}
+	else if (WIFSTOPPED(status))
+		return (WSTOPSIG(status) + 128);
+	else if (WIFEXITED(status))
+		return (WEXITSTATUS(status));
+	else if (WIFCONTINUED(status))
+		return (0);
+	return (-1);
+}
 // @doc ft_get_executable
 // @kind func
 // @desc Returns the first string of a command line prepanded with a /.
@@ -36,14 +59,14 @@ char	*ft_find_exec(const char *name, char const **path)
 {
 	char	*result;
 
-	if (name && name[0] == '.')
+	if (name && name[0] != '/')
 	{
 		result = ft_extend(ft_extend(getcwd(NULL, 0), "/"), (char *)name);
 		if (!access(result, 0))
 			return (result);
 		free(result);
 	}
-	while (path && *path)
+	while (path && *path && *name != '/')
 	{
 		result = ft_extend(ft_strjoin(*path, "/"), (char *)name);
 		if (!access(result, 0))
@@ -51,6 +74,6 @@ char	*ft_find_exec(const char *name, char const **path)
 		free(result);
 		path++;
 	}
-	result = ft_extend(ft_extend(getcwd(NULL, 0), "/"), (char *)name);
+	result = ft_strdup(name);
 	return (result);
 }

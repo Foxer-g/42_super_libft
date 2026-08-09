@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   int_conversion.c                                   :+:      :+:    :+:   */
+/*   int_conversion.c                                    ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀    */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 14:25:06 by rboutlo           #+#    #+#             */
-/*   Updated: 2026/02/18 01:04:10 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/08/09 03:18:03 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,9 @@ int32_t	ft_atoi(const char *str)
 		i++;
 	result = 0;
 	while (ft_isdigit(str[i]) && result < INT32_MAX)
-	{
-		result = (result * 10) + (str[i] - '0');
-		i++;
-	}
+		result = (result * 10) + (str[i++] - '0');
+	if (result > INT32_MAX + negative)
+		errno = EINVAL;
 	if (negative)
 		return (-result);
 	return (result);
