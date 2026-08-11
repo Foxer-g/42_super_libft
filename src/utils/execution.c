@@ -6,7 +6,7 @@
 /*   By: neumann </var/spool/mail/neumann>               ⣿⣖⠾⢗⣶⣾⣿⡇⠿⠷⠸⠿⢟⣛⡵⣫     */
 /*                                                       ⠙⢿⣿⣿⣿⣿⣿⣿⣮⣭⣭⣭⡭⣶⣾⣿     */
 /*   Created: 2026/05/31 19:29:15 by neumann            ⠀⠀⣿⣿⣿⠛⠛⠛⣿⣿⣿⠁⠀⠀⠉⠁      */
-/*   Updated: 2026/08/09 00:06:53 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/11 02:48:55 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,21 +59,25 @@ char	*ft_find_exec(const char *name, char const **path)
 {
 	char	*result;
 
-	if (name && name[0] != '/')
+	if (!ft_strcmp(".", name) || !ft_strcmp("..", name))
+		exit(2 + 125 * !ft_strcmp("..", name));
+	if (name && name[0] != '/' && ft_strchr(name, '/'))
 	{
 		result = ft_extend(ft_extend(getcwd(NULL, 0), "/"), (char *)name);
-		if (!access(result, 0))
+		if (!access(result, F_OK))
 			return (result);
 		free(result);
 	}
 	while (path && *path && *name != '/')
 	{
 		result = ft_extend(ft_strjoin(*path, "/"), (char *)name);
-		if (!access(result, 0))
+		if (!access(result, F_OK))
 			return (result);
 		free(result);
 		path++;
 	}
+	if (name[0] != '/')
+		exit(127);
 	result = ft_strdup(name);
 	return (result);
 }
