@@ -60,6 +60,8 @@ char	*ft_strdup(const char *s)
 	char	*dup;
 	char	*odup;
 
+	if (!s)
+		return (ft_calloc(1, sizeof(char)));
 	dup = malloc((ft_strlen(s) + 1) * (sizeof(char)));
 	if (!dup)
 		return (NULL);
