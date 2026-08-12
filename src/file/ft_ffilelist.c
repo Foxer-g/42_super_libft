@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 21:59:22 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/07/30 20:17:58 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/12 07:55:30 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	append_file(t_ffile file)
 	i = 0;
 	while (i <= FD_SETSIZE)
 	{
-		if (!filelist[i])
+		if (!filelist[i] || filelist[i] < 0)
 		{
 			filelist[i] = file;
 			return ;
@@ -78,8 +78,11 @@ void	ft_clear_filelist(void)
 	i = 0;
 	while (i <= FD_SETSIZE)
 	{
-		if (filelist[i])
+		if (filelist[i] > 0)
+		{
 			close(filelist[i]);
+			filelist[i] = -1;
+		}
 		i++;
 	}
 }

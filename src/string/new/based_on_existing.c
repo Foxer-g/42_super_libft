@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 06:17:50 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/08/12 05:57:28 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/12 06:19:15 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,4 +104,3 @@ char	**ft_copy_env(const char **env)
 		*result++ = ft_strdup(*env++);
 	return (oresult);
 }
-
