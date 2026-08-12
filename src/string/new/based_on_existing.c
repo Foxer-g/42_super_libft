@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   based_on_existing.c                                :+:      :+:    :+:   */
+/*   based_on_existing.c                                 ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀    */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 06:17:50 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/02/18 01:05:05 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/08/12 05:57:28 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,3 +84,24 @@ char	*ft_strndup(const char *s, uint64_t n)
 	*dup = '\0';
 	return (odup);
 }
+
+// @doc ft_copy_env
+// @kind func
+// @desc Copies the char ** tab provided as env and returns the copy.
+// @param env: char **, Pointer to the tab to copy.
+// @returns char **
+char	**ft_copy_env(const char **env)
+{
+	char	**result;
+	char	**oresult;
+
+	if (!env)
+		return (ft_calloc(1, sizeof(char *)));
+	else
+		result = ft_calloc(ft_nt_tablen((void *)env) + 1, sizeof(char *));
+	oresult = result;
+	while (env && *env)
+		*result++ = ft_strdup(*env++);
+	return (oresult);
+}
+

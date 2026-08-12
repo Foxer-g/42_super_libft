@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/05 22:45:52 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/08/08 05:30:19 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/12 05:57:00 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,21 +133,4 @@ void	ft_set_exit_code(int32_t code, char ***env)
 	its = ft_itoa(code % 256);
 	ft_set_env("?", env, its);
 	free(its);
-}
-
-// @doc ft_copy_env
-// @kind func
-// @desc Copies the char ** tab provided as env and returns the copy.
-// @param env: char **, Pointer to the tab to copy.
-// @returns char **
-char	**ft_copy_env(const char **env)
-{
-	char	**result;
-	char	**oresult;
-
-	result = ft_calloc(ft_nt_tablen((void *)env) + 1, sizeof(char *));
-	oresult = result;
-	while (*env)
-		*result++ = ft_strdup(*env++);
-	return (oresult);
 }
