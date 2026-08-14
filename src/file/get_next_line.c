@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 04:11:03 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/08/13 07:26:40 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/14 01:40:49 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ static int8_t	readline(char *buffer, char **persistant, int fd)
 		if (status <= 0)
 		{
 			if (*persistant && status < 0)
+			{
 				free(*persistant);
+				*persistant = NULL;
+			}
 			return (!status);
 		}
 		buffer[status] = '\0';
@@ -41,6 +44,7 @@ static char	*get_line_from_stash(char **stash)
 	if (!**stash)
 	{
 		free(*stash);
+		*stash = NULL;
 		return (NULL);
 	}
 	line = ft_strndup(*stash, ft_strlen_until(*stash, '\n') + 1);
