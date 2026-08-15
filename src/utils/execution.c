@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42angouleme.fr>      ⣿⣖⠾⢗⣶⣾⣿⡇⠿⠷⠸⠿⢟⣛⡵⣫     */
 /*                                                       ⠙⢿⣿⣿⣿⣿⣿⣿⣮⣭⣭⣭⡭⣶⣾⣿     */
 /*   Created: 2026/05/31 19:29:15 by rboutelo           ⠀⠀⣿⣿⣿⠛⠛⠛⣿⣿⣿⠁⠀⠀⠉⠁      */
-/*   Updated: 2026/08/15 06:35:09 by rboutelo           ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/15 19:38:16 by rboutelo           ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int32_t	ft_get_exit_code_from_status(int32_t status)
 		if (signal != SIGINT && signal != SIGPIPE)
 		{
 			if (status & 0x80)
-				ft_dprintf(2, "(core dumped)");
+				ft_dprintf(2, "\n(core dumped)");
 		}
 		ft_dprintf(2, "\n");
 		return (signal + 128);
