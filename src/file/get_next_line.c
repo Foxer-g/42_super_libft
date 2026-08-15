@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 04:11:03 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/08/14 01:40:49 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/15 04:05:01 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,11 @@ static char	*get_line_from_stash(char **stash)
 		return (NULL);
 	}
 	line = ft_strndup(*stash, ft_strlen_until(*stash, '\n') + 1);
-	nstash = ft_strndup(ft_strchr(*stash, '\n') + 1,
-			ft_strlen_until(ft_strchr(*stash, '\n') + 1, '\0'));
+	if (ft_strchr(*stash, '\n'))
+		nstash = ft_strndup(ft_strchr(*stash, '\n') + 1,
+				ft_strlen_until(ft_strchr(*stash, '\n') + 1, '\0'));
+	else
+		nstash = NULL;
 	free(*stash);
 	*stash = nstash;
 	return (line);
