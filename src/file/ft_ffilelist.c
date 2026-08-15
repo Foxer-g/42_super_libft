@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 21:59:22 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/08/12 07:55:30 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/15 04:35:19 by neumann            ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	ft_clear_filelist(void)
 	uint32_t		i;
 
 	i = 0;
-	while (i <= FD_SETSIZE)
+	while (i < FD_SETSIZE)
 	{
 		if (filelist[i] > 0)
 		{
