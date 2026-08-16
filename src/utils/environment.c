@@ -1,24 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   environment.c                                      :+:      :+:    :+:   */
+/*   environment.c                                       ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀    */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/05 22:45:52 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/08/15 06:15:05 by rboutelo         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   environment.c                                       ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀    */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rboutelo <rboutelo@student.42angouleme.f>  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/12 16:54:35 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/08/05 23:39:50 by rboutelo           ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/17 00:01:53 by rboutelo           ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +69,8 @@ void	ft_set_env(const char *name, char ***env, char *value)
 	oenv = *env;
 	while (*oenv)
 	{
-		if (!ft_strncmp(name, *oenv, ft_strlen(name))
-			&& (*oenv)[ft_strlen(name)] == '=')
+		if ((!ft_strncmp(name, *oenv, ft_strlen(name))
+			&& (*oenv)[ft_strlen(name)] == '=') || !ft_strcmp(name, *oenv))
 			var = oenv;
 		oenv++;
 		len++;
