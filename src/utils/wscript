@@ -1,7 +1,8 @@
 def build(bld):
 	sources = [
 		"environment.c",
-		"math.c"
+		"execution.c",
+		"math.c",
 	]
 	lftutl = bld.shlib(
 		source		= sources,

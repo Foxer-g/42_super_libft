@@ -1,6 +1,7 @@
 def build(bld):
 	sources = [
-		"int_conversion.c"
+		"long_conversion.c",
+		"int_conversion.c",
 	]
 	lftstrcvn = bld.shlib(
 		source		= sources,
