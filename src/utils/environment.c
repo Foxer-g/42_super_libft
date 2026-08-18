@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/05 22:45:52 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/08/17 00:01:53 by rboutelo           ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/08/18 06:22:27 by rboutelo           ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_set_env(const char *name, char ***env, char *value)
 	while (*oenv)
 	{
 		if ((!ft_strncmp(name, *oenv, ft_strlen(name))
-			&& (*oenv)[ft_strlen(name)] == '=') || !ft_strcmp(name, *oenv))
+				&& (*oenv)[ft_strlen(name)] == '=') || !ft_strcmp(name, *oenv))
 			var = oenv;
 		oenv++;
 		len++;
