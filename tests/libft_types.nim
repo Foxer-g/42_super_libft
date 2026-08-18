@@ -1,15 +1,3 @@
-##  **************************************************************************
-##
-##                                                        ⠀⠀⠀⠀⠀⠀⣴⣾⣿⣿⣿⠷⢠⣤⡀
-#    libft_types.nim                                     ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀     #
-##                                                        ⣴⠛⢿⡟⠛⢿⣦⠹⣿⡆⣿⣿⣿⣿⣷⢩⡶⠃
-##    By: rboutelo <rboutelo@student.42angouleme.fr>               ⣿⣖⠾⢗⣶⣾⣿⡇⠿⠷⠸⠿⢟⣛⡵⣫
-##                                                        ⠙⢿⣿⣿⣿⣿⣿⣿⣮⣭⣭⣭⡭⣶⣾⣿
-##    Created: 2026/07/28 19:34:27 by rboutelo           ⠀⠀⣿⣿⣿⠛⠛⠛⣿⣿⣿⠁⠀⠀⠉⠁
-#    Updated: 2026/08/03 22:57:00 by rboutelo           ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟            #
-##
-##  **************************************************************************
-
 ##  @doc t_validator
 ##  @kind type
 ##  @desc Enum to index into the default validator functions in g_validators.
