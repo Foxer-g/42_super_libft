@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_manipulation.c                                :+:      :+:    :+:   */
+/*   list_manipulation.c                                 ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀    */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 05:34:50 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/08/15 06:15:05 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/09/20 03:32:23 by rboutelo           ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,12 @@ void	ft_arr_free(void **arr)
 {
 	free(((t_header *)*arr) - 1);
 	*arr = NULL;
+}
+
+bool	ft_arr_is_empty(void **arr)
+{
+	t_header	*header;
+
+	header = (t_header *)*arr - 1;
+	return (header->count == 0);
 }

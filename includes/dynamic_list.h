@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dynamic_list.h                                     :+:      :+:    :+:   */
+/*   dynamic_list.h                                      ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀    */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 05:35:19 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/08/15 06:15:05 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/09/20 03:32:40 by rboutelo           ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ typedef struct s_elem
 void	*ft_init_array(t_elem elem);
 void	*ft_extend_array(void **arr);
 void	ft_arr_push(void **arr, t_elem elem);
+t_elem	ft_arr_pop_left(void **arr);
+bool	ft_arr_is_empty(void **arr);
 void	ft_arr_free(void **arr);
 
 #endif //DYNAMIC_LIST_H
