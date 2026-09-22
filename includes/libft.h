@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:45:16 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/08/15 06:15:05 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/09/22 12:48:47 by toespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ char		*ft_strnstr(const char *big, const char *little, size_t len);
 /*    CONVERSION    */
 /* **************** */
 int32_t		ft_atoi(const char *str);
+int32_t		ft_atoi_base(char *str, char *base);
 int64_t		ft_atol(const char *str);
 char		*ft_itoa(int32_t n);
 

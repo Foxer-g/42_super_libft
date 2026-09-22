@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 14:25:06 by rboutlo           #+#    #+#             */
-/*   Updated: 2026/08/15 06:15:05 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/09/22 12:49:26 by toespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,34 @@ static int32_t	get_10_pow(int64_t value)
 		value /= 10;
 	}
 	return (i - 1);
+}
+
+int32_t	ft_atoi_base(char *str, char *base)
+{
+	uintmax_t	i[2];
+	int32_t		sign;
+	int32_t		res;
+
+	i[0] = 0;
+	sign = 1;
+	res = 0;
+	while (str[i[0]] == ' ' || str[i[0]] == '\t' || str[i[0]] == '\n'
+		|| str[i[0]] == '\v' || str[i[0]] == '\f' || str[i[0]] == '\r')
+		i[0]++;
+	if (str[i[0]] == '-' || str[i[0]] == '+')
+		if (str[i[0]++] == '-')
+			sign = -1;
+	while (str[i[0]])
+	{
+		i[1] = 0;
+		while (i[1] < ft_strlen(base) && base[i[1]] != str[i[0]])
+			i[1]++;
+		if (i[1] == ft_strlen(base))
+			break ;
+		res = res * ft_strlen(base) + i[1];
+		i[0]++;
+	}
+	return (res * sign);
 }
 
 char	*ft_itoa(int32_t n)
