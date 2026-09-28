@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split.c                                          ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀    */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 10:30:58 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/08/15 06:15:05 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/09/24 05:00:37 by rboutelo           ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ char	**ft_split(char const *s, char c)
 	int32_t	strc;
 	bool	error;
 
-	error = 0;
 	if (!s)
 		return (NULL);
 	strc = count_strs(s, c);
@@ -110,7 +109,6 @@ char	**ft_preserving_split(char const *s, char c)
 	int32_t	strc;
 	bool	error;
 
-	error = 0;
 	if (!s)
 		return (NULL);
 	strc = count_strs(s, c);

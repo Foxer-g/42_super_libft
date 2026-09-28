@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42.fr>               ⣿⣖⠾⢗⣶⣾⣿⡇⠿⠷⠸⠿⢟⣛⡵⣫     */
 /*                                                       ⠙⢿⣿⣿⣿⣿⣿⣿⣮⣭⣭⣭⡭⣶⣾⣿     */
 /*   Created: 2026/05/31 19:29:15 by rboutelo           ⠀⠀⣿⣿⣿⠛⠛⠛⣿⣿⣿⠁⠀⠀⠉⠁      */
-/*   Updated: 2026/08/18 11:28:08 by rboutelo           ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
+/*   Updated: 2026/09/24 04:59:08 by rboutelo           ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ char	*ft_find_exec(const char *name, char const **path)
 {
 	char	*result;
 
-	if (!ft_strcmp(".", name) || !ft_strcmp("..", name))
+	if (!name || !ft_strcmp(".", name) || !ft_strcmp("..", name))
 		errno = EINVAL;
-	if (!ft_strcmp(".", name) || !ft_strcmp("..", name))
+	if (!name || !ft_strcmp(".", name) || !ft_strcmp("..", name))
 		return (NULL);
 	if (name && name[0] != '/' && ft_strchr(name, '/'))
 	{
