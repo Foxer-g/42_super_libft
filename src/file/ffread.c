@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ffread.c                                           :+:      :+:    :+:   */
+/*   ffread.c                                            ⠀⢀⣀⣀⣛⡑⢶⣬⣭⢩⣶⣿⣷⣭⢻⣦⡀    */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 23:24:15 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/08/15 06:15:05 by rboutelo         ###   ########.fr       */
+/*   Updated: 2026/09/25 03:44:26 by rboutelo           ⠀⠀⠙⠛⠉⠀⠀⠀⠻⠿⠟           */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,24 @@ intmax_t	ft_ffread(t_ffile file, void *buf, intmax_t nbyte)
 // @returns intmax_t, Number of bytes read.
 intmax_t	ft_ffreadall(t_ffile file, void **buf)
 {
-	char	*lines;
-	char	*line;
+	char		*lines;
+	uintmax_t	size[2];
+	intmax_t	total;
+	intmax_t	tmp;
 
-	lines = NULL;
-	line = get_next_line(file);
-	while (line)
+	size[0] = 1024;
+	size[1] = 1024;
+	total = 0;
+	lines = ft_calloc(size[1], sizeof(char));
+	tmp = read(file, lines + total, size[0]);
+	while (tmp > 0)
 	{
-		lines = ft_extend(lines, line);
-		line = get_next_line(file);
+		if (size[0] != size[1])
+			size[0] = size[1];
+		lines = ft_recalloc(lines, size[1], size[1] * 2, sizeof(char));
+		size[1] *= 2;
+		total += tmp;
+		tmp = read(file, lines + total, size[0]);
 	}
 	*buf = lines;
 	return (ft_strlen(lines));
