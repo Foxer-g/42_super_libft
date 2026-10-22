@@ -6,7 +6,7 @@
 /*   By: rboutelo <rboutelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:45:16 by rboutelo          #+#    #+#             */
-/*   Updated: 2026/09/22 12:48:47 by toespino         ###   ########.fr       */
+/*   Updated: 2026/10/20 04:15:12 by toespino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,8 @@ char		*ft_find_exec(const char *name, char const **env);
 /* **************** */
 uintmax_t	ft_min(uintmax_t a, uintmax_t b);
 uintmax_t	ft_max(uintmax_t a, uintmax_t b);
+double		ft_dmin(double a, double b);
+double		ft_dmax(double a, double b);
 uintmax_t	ft_nt_tablen(void **tab);
 
 /* ******************** */
